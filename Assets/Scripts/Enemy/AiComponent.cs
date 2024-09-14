@@ -14,7 +14,6 @@ namespace UndeadAssault
         public Entity target;
         private NavMeshAgent _navMeshAgent;
         private Stats _stats;
-        private EntityAnimManager _animManager;
         private float _seekTimeout = 0;
 
         void Start()
@@ -22,7 +21,6 @@ namespace UndeadAssault
             _self = GetComponent<Entity>();
             _stats = _self.stats;
             _navMeshAgent = GetComponent<NavMeshAgent>();
-            _animManager = GetComponent<EntityAnimManager>();
         }
 
         void Update()
@@ -48,7 +46,7 @@ namespace UndeadAssault
                 _seekTimeout = 0.5f;
                 Seek();
             }
-            _animManager.SetLocomotionVector(0, _navMeshAgent.velocity.normalized.magnitude);
+            _self._animManager.SetLocomotionVector(0, _navMeshAgent.velocity.normalized.magnitude);
         }
 
         public void UpdateTarget()
@@ -73,7 +71,6 @@ namespace UndeadAssault
                 if (primaryAbility != null)
                 {
                     primaryAbility.CastAbility(target);
-                    _animManager.FirePrimaryAttack();
                 }
             }
         }
