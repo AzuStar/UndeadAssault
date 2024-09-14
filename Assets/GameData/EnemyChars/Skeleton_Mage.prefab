@@ -87,13 +87,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats:
-    attack: 0
+    attack: 3
     health: 0
-    maxHealth: 0
-    attackRange: 0
-    primaryCdr: 0
-    secondaryCdr: 0
-    movementSpeed: 0
+    maxHealth: 45
+    attackRange: 7
+    primaryCdr: 1
+    secondaryCdr: 1
+    movementSpeed: 4
 --- !u!114 &8772313184272174339
 MonoBehaviour:
   m_ObjectHideFlags: 0

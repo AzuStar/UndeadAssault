@@ -36,7 +36,7 @@ namespace UndeadAssault
         {
             _aiComponent.animationPaused = true;
             this.AttachNTimer(
-                (float)cooldownFormula,
+                (float)(castTime / _stats.primaryCdr),
                 () =>
                 {
                     Debug.Log("Skeleton Minion finish attack");
