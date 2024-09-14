@@ -10,12 +10,14 @@ namespace UndeadAssault
     {
         private NavMeshAgent _navMeshAgent;
         private Stats _stats;
+        private EntityAnimManager _animManager;
 
         void Start()
         {
             _navMeshAgent = GetComponent<NavMeshAgent>();
             _stats = GetComponent<Entity>().stats;
             // navMeshAgent.updatePosition = false;
+            _animManager = GetComponent<EntityAnimManager>();
         }
 
         void Update()
@@ -43,6 +45,8 @@ namespace UndeadAssault
                 offsetPoint.Normalize();
                 _navMeshAgent.Move(offsetPoint * movementSpeed);
             }
+            var offsetRotated = Quaternion.AngleAxis(transform.rotation.eulerAngles.y, -Vector3.up) * offsetPoint.normalized;
+            _animManager.SetLocomotionVector(offsetRotated.x, offsetRotated.z);
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             Plane plane = new Plane(Vector3.up, transform.position);
             if (plane.Raycast(ray, out float distance))
