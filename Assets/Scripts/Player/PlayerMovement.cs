@@ -24,23 +24,24 @@ namespace UndeadAssault
             Vector3 offsetPoint = Vector3.zero;
             if (Input.GetKey(KeyCode.W))
             {
-                offsetPoint.z += movementSpeed;
+                offsetPoint.z += 1;
             }
             if (Input.GetKey(KeyCode.S))
             {
-                offsetPoint.z -= movementSpeed;
+                offsetPoint.z -= 1;
             }
             if (Input.GetKey(KeyCode.A))
             {
-                offsetPoint.x -= movementSpeed;
+                offsetPoint.x -= 1;
             }
             if (Input.GetKey(KeyCode.D))
             {
-                offsetPoint.x += movementSpeed;
+                offsetPoint.x += 1;
             }
             if (offsetPoint != Vector3.zero)
             {
-                _navMeshAgent.Move(offsetPoint);
+                offsetPoint.Normalize();
+                _navMeshAgent.Move(offsetPoint * movementSpeed);
             }
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             Plane plane = new Plane(Vector3.up, transform.position);

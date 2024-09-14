@@ -36,7 +36,8 @@ namespace UndeadAssault
         {
             Vector3 launchPoint =
                 _headCastPoint == null ? transform.position : _headCastPoint.transform.position;
-            Instantiate(sparkProjectile, launchPoint, transform.rotation);
+            Projectile proj = Instantiate(sparkProjectile, launchPoint, transform.rotation);
+            proj.owner = GetComponent<Entity>();
         }
     }
 }
