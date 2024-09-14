@@ -623,21 +623,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityToCast: {fileID: 0}
---- !u!114 &95529951
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 95529944}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce60160e999fc2143b0de33602ab9e9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  castTime: 0.55
-  damageMultiplier: 1
-  swingAngle: 90
 --- !u!1 &118478817
 GameObject:
   m_ObjectHideFlags: 0
@@ -2997,6 +2982,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityToCast: {fileID: 662261982}
+--- !u!54 &662261994
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 662261979}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!4 &665183828 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8484843507012908122, guid: d46caabb545f85e44937c8499cd2af02, type: 3}
@@ -3133,9 +3145,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6507249952205814155, guid: b8885deaadcf33046b7b474d1da42736, type: 3}
-      insertIndex: 1
-      addedObject: {fileID: 95529951}
     - targetCorrespondingSourceObject: {fileID: 6507249952205814155, guid: b8885deaadcf33046b7b474d1da42736, type: 3}
       insertIndex: -1
       addedObject: {fileID: 95529950}
@@ -6309,6 +6318,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 9075699954610139001, guid: 216830006ad680a49bf311cee1b1ebe5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 662261986}
+    - targetCorrespondingSourceObject: {fileID: 9075699954610139001, guid: 216830006ad680a49bf311cee1b1ebe5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 662261994}
   m_SourcePrefab: {fileID: 100100000, guid: 216830006ad680a49bf311cee1b1ebe5, type: 3}
 --- !u!1001 &1553817256
 PrefabInstance:
@@ -9244,12 +9256,24 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1968630258968496422, guid: cf2bdfeb7245c37478c01e0b07f386b3, type: 3}
       propertyPath: castTime
-      value: 0.15
+      value: 0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 4233269168159447877, guid: cf2bdfeb7245c37478c01e0b07f386b3, type: 3}
+      propertyPath: xOffset
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4233269168159447877, guid: cf2bdfeb7245c37478c01e0b07f386b3, type: 3}
+      propertyPath: yOffset
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4233269168159447877, guid: cf2bdfeb7245c37478c01e0b07f386b3, type: 3}
       propertyPath: castTime
-      value: 0.25
+      value: 0.35
       objectReference: {fileID: 0}
+    - target: {fileID: 4233269168159447877, guid: cf2bdfeb7245c37478c01e0b07f386b3, type: 3}
+      propertyPath: meteoriteProjectile
+      value: 
+      objectReference: {fileID: 8104579337726447175, guid: 281abcb2c3687424e9a69328a57a94f2, type: 3}
     - target: {fileID: 7306283601768909065, guid: cf2bdfeb7245c37478c01e0b07f386b3, type: 3}
       propertyPath: m_Name
       value: Mage

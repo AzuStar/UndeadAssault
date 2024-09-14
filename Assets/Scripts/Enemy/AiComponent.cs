@@ -33,7 +33,7 @@ namespace UndeadAssault
             }
             if (target == null)
                 UpdateTarget();
-            if (animationPaused)
+            if (animationPaused || target == null)
                 return;
             float distance = Vector3.Distance(transform.position, target.transform.position);
             StopWithinAttackRange(distance);
@@ -80,8 +80,6 @@ namespace UndeadAssault
 
         public void StopWithinAttackRange(float distance)
         {
-            if (target == null)
-                return;
             if (distance < _stats.attackRange * attackRangeOffset)
             {
                 _navMeshAgent.isStopped = true;
@@ -94,8 +92,6 @@ namespace UndeadAssault
 
         public void Seek()
         {
-            if (target == null)
-                return;
             _navMeshAgent.SetDestination(target.transform.position);
         }
     }

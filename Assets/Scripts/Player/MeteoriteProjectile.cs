@@ -6,19 +6,7 @@ namespace UndeadAssault
     {
         public double damagePercent = 1.00;
         public Vector3 impactPoint;
-
-        protected override void OnTerrainCollision(Vector3 collisionPoint)
-        {
-            double damage = owner.stats.attack * damagePercent;
-            Utils
-                .GetEntitiesInRadius(collisionPoint, 5, tar => owner == tar || owner.tag == tar.tag)
-                .ForEach(target =>
-                {
-                    owner.DealDamage(target, damage);
-                });
-
-            Remove();
-        }
+        public float impactRadius = 5;
 
         protected override void FixedUpdate()
         {
@@ -27,6 +15,33 @@ namespace UndeadAssault
             transform.position +=
                 transform.forward * speed * (1 + speedScale) * Time.fixedDeltaTime;
             speedScale *= speedRecovery;
+            if (Vector3.Distance(transform.position, impactPoint) < 0.1f)
+            {
+                Explode();
+            }
+        }
+
+        public void Explode()
+        {
+            double damage = owner.stats.attack * damagePercent;
+            Utils
+                .GetEntitiesInRadius(
+                    transform.position,
+                    impactRadius,
+                    tar => owner != tar && owner.tag != tar.tag
+                )
+                .ForEach(target =>
+                {
+                    owner.DealDamage(target, damage);
+                });
+
+            Remove();
+        }
+
+        void OnDrawGizmos()
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(transform.position, impactRadius);
         }
     }
 }

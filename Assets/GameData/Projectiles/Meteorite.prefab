@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4971097015990966}
   - component: {fileID: 8104579337726447175}
   - component: {fileID: 54723350441956278}
-  - component: {fileID: 135521883611116180}
   - component: {fileID: 108212708603584814}
   - component: {fileID: 299097586531706941}
   m_Layer: 0
@@ -32,9 +31,10 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 4929761025421273454}
+  - {fileID: 9174313421509407854}
+  - {fileID: 4549684551196332}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8104579337726447175
@@ -58,6 +58,7 @@ MonoBehaviour:
   owner: {fileID: 0}
   damagePercent: 1
   impactPoint: {x: 0, y: 0, z: 0}
+  impactRadius: 3
 --- !u!54 &54723350441956278
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -85,27 +86,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!135 &135521883611116180
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1213529451062198}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.05
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!108 &108212708603584814
 Light:
   m_ObjectHideFlags: 0
@@ -5069,12 +5049,12 @@ Transform:
   m_GameObject: {fileID: 1828698928921012}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.38}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4331539615852696}
-  m_Father: {fileID: 4929761025421273454}
+  m_Father: {fileID: 4971097015990966}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!198 &198909700012747184
 ParticleSystem:
@@ -9894,39 +9874,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!1 &2078100307290136328
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4929761025421273454}
-  m_Layer: 0
-  m_Name: Visuals
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4929761025421273454
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2078100307290136328}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.38}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 9174313421509407854}
-  - {fileID: 4549684551196332}
-  m_Father: {fileID: 4971097015990966}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3465555144527296990
 GameObject:
   m_ObjectHideFlags: 0
@@ -9954,11 +9901,11 @@ Transform:
   m_GameObject: {fileID: 3465555144527296990}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.38}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 4929761025421273454}
+  m_Father: {fileID: 4971097015990966}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &8233666921735145134
 ParticleSystem:
@@ -14125,10 +14072,10 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.7122642, g: 0.8237618, b: 1, a: 1}
-        key1: {r: 1, g: 0.37254906, b: 0.99594027, a: 1}
-        key2: {r: 0.49654344, g: 0.13594696, b: 0.6132076, a: 0}
-        key3: {r: 0.18662772, g: 0, b: 0.40392157, a: 0}
+        key0: {r: 1, g: 0.80647856, b: 0.7137255, a: 1}
+        key1: {r: 1, g: 0.255, b: 0.3318005, a: 1}
+        key2: {r: 0.6117647, g: 0.13725491, b: 0.18868402, a: 0}
+        key3: {r: 0.40392157, g: 0, b: 0.10325717, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
@@ -14150,7 +14097,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-        m_ColorSpace: -1
+        m_ColorSpace: 0
         m_NumColorKeys: 4
         m_NumAlphaKeys: 2
       minGradient:

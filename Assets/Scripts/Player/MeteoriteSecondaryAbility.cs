@@ -4,6 +4,7 @@ namespace UndeadAssault
 {
     public class MeteoriteSecondaryAbility : SecondaryAbility
     {
+        public float xOffset = 5f;
         public float heightOffset = 10f;
         public MeteoriteProjectile meteoriteProjectile;
         public override float cooldownFormula => 0.5f / _stats.secondaryCdr;
@@ -53,11 +54,8 @@ namespace UndeadAssault
                 castTime / _stats.primaryCdr,
                 () =>
                 {
-                    Vector2 onCircle = Random.insideUnitCircle.normalized * 5;
-                    Vector3 spawnPoint =
-                        impactPoint
-                        + new Vector3(0, heightOffset, 0)
-                        + new Vector3(onCircle.x, 0, onCircle.y);
+                    float sign = Random.value > 0.5f ? 1 : -1;
+                    Vector3 spawnPoint = impactPoint + new Vector3(xOffset * sign, heightOffset, 0);
                     MeteoriteProjectile proj = Instantiate(
                         meteoriteProjectile,
                         spawnPoint,
