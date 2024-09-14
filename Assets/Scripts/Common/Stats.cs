@@ -8,9 +8,9 @@ namespace UndeadAssault
         public double attack;
         public double health;
         public double maxHealth;
-        public double attackRange;
-        public double primaryCdr;
-        public double secondaryCdr;
-        public double movementSpeed;
+        public float attackRange;
+        public float primaryCdr;
+        public float secondaryCdr;
+        public float movementSpeed;
     }
 }
