@@ -5,7 +5,7 @@ namespace UndeadAssault
 {
     [RequireComponent(typeof(Entity))]
     [RequireComponent(typeof(NavMeshAgent))]
-    public class DefaultAi : MonoBehaviour
+    public class AiComponent : MonoBehaviour
     {
         public bool allowAttack => _navMeshAgent.isStopped;
         public bool animationPaused = false;

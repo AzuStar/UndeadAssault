@@ -1,10 +1,6 @@
-using UnityEngine;
-using UnityEngine.AI;
-
 namespace UndeadAssault
 {
-    [RequireComponent(typeof(AiComponent))]
-    public class SkeletonMinionPrimaryAbility : PrimaryAbility
+    public class SkeletonMinionAi : AiComponent
     {
         public double damageMultiplier = 1.00;
         public override double cooldownFormula => 0.55 / _stats.primaryCdr;
