@@ -20,7 +20,7 @@ namespace UndeadAssault
 
         void Update()
         {
-            float movementSpeed = (float)(stats.movementSpeed / 100);
+            float movementSpeed = (float)stats.movementSpeed * Time.deltaTime;
             Vector3 offsetPoint = Vector3.zero;
             if (Input.GetKey(KeyCode.W))
             {
