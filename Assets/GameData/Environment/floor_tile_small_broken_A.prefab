@@ -53,6 +53,10 @@ PrefabInstance:
       value: floor_tile_small_broken_A
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b6c2a5a800cabc646b4ce81eede73d69, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b6c2a5a800cabc646b4ce81eede73d69, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}

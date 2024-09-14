@@ -6,15 +6,17 @@ namespace UndeadAssault
     {
         public Projectile sparkProjectile;
 
-        public override double cooldownFormula => 0.5 / (1 + _stats.primaryCdr);
+        public override double cooldownFormula => 0.5 / _stats.primaryCdr;
         private double _cdTimeout;
         private Stats _stats;
         private HeadCastPoint _headCastPoint;
+        private EntityAnimManager _animManager;
 
         void Start()
         {
             _stats = GetComponent<Entity>().stats;
             _headCastPoint = GetComponentInChildren<HeadCastPoint>();
+            _animManager = GetComponent<EntityAnimManager>();
         }
 
         void Update()
@@ -36,7 +38,9 @@ namespace UndeadAssault
         {
             Vector3 launchPoint =
                 _headCastPoint == null ? transform.position : _headCastPoint.transform.position;
-            Instantiate(sparkProjectile, launchPoint, transform.rotation);
+            Projectile proj = Instantiate(sparkProjectile, launchPoint, transform.rotation);
+            proj.owner = GetComponent<Entity>();
+            _animManager.FirePrimaryAttack();
         }
     }
 }

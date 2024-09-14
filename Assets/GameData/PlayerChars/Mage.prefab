@@ -96,6 +96,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mage
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e4f01e41aea83e247ae1a1c9425c638b, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: e4f01e41aea83e247ae1a1c9425c638b, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 66fb0d7f9c300d34299ef5040b8bf678, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -118,6 +126,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e4f01e41aea83e247ae1a1c9425c638b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3967629808131837626}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e4f01e41aea83e247ae1a1c9425c638b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1909665673041521679}
   m_SourcePrefab: {fileID: 100100000, guid: e4f01e41aea83e247ae1a1c9425c638b, type: 3}
 --- !u!1 &7306283601768909065 stripped
 GameObject:
@@ -137,10 +148,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats:
-    attack: 0
-    health: 0
-    primaryCdr: 0
-    secondaryCdr: 0
+    attack: 10
+    health: 100
+    primaryCdr: 1
+    secondaryCdr: 1
     movementSpeed: 5
 --- !u!114 &1968630258968496422
 MonoBehaviour:
@@ -154,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dd20a05a4942e44aa02ad77215f1158, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sparkProjectile: {fileID: 114729273772597000, guid: ba7b1c1bb06da35478af647d15424381, type: 3}
+  sparkProjectile: {fileID: -4780037369204819333, guid: ba7b1c1bb06da35478af647d15424381, type: 3}
 --- !u!114 &4647653682564452361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,13 +178,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80e4a693582c3d1469be40646fae87c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  navMeshAgent: {fileID: 0}
-  stats:
-    attack: 0
-    health: 0
-    primaryCdr: 0
-    secondaryCdr: 0
-    movementSpeed: 0
 --- !u!136 &7217887053714624485
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -219,6 +223,18 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1909665673041521679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7306283601768909065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3433f6329da1b5f4db8317ea830cd0ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7939549915619972019 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e4f01e41aea83e247ae1a1c9425c638b, type: 3}
