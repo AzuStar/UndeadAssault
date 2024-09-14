@@ -2,7 +2,8 @@ namespace UndeadAssault
 {
     public abstract class CastableAbility : Ability
     {
-        public abstract double cooldownFormula { get; }
-        public abstract void CastAbility();
+        public float castTime;
+        public abstract float cooldownFormula { get; }
+        public abstract void CastAbility(Entity target);
     }
 }

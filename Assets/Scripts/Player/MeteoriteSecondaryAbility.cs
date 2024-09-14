@@ -4,7 +4,7 @@ namespace UndeadAssault
 {
     public class MeteoriteSecondaryAbility : SecondaryAbility
     {
-        public override double cooldownFormula => 0.5 / (1 + stats.primaryCdr);
+        public override float cooldownFormula => (float)(0.5f / stats.secondaryCdr);
         private double _cdTimeout;
         private Stats stats;
 
@@ -17,17 +17,15 @@ namespace UndeadAssault
         {
             if (_cdTimeout > 0)
                 _cdTimeout -= Time.deltaTime;
-
-            if (Input.GetMouseButton(1))
-            {
-                if (_cdTimeout <= 0)
-                {
-                    CastAbility();
-                    _cdTimeout += cooldownFormula;
-                }
-            }
         }
 
-        public override void CastAbility() { }
+        public override void CastAbility(Entity target)
+        {
+            if (_cdTimeout <= 0)
+            {
+                Debug.Log("MeteoriteSecondaryAbility");
+                _cdTimeout += cooldownFormula;
+            }
+        }
     }
 }
