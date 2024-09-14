@@ -208,7 +208,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &615041744
 RectTransform:
   m_ObjectHideFlags: 0
@@ -968,7 +968,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainMenu: {fileID: 615041743}
-  loadingCanvas: {fileID: 2014699644}
+  loadingScreen: {fileID: 2014699644}
   player: {fileID: 1167108586}
 --- !u!4 &1677164382
 Transform:
@@ -1340,7 +1340,7 @@ GameObject:
   - component: {fileID: 2014699646}
   - component: {fileID: 2014699645}
   m_Layer: 5
-  m_Name: LoadingCanvas
+  m_Name: LoadingScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
