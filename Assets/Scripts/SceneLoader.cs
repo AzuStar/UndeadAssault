@@ -7,14 +7,14 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
     public GameObject mainMenu;
-    public GameObject loadingCanvas;
+    public GameObject loadingScreen;
 
     public GameObject player;
 
     public void StartGame()
     {
         mainMenu.SetActive(false);
-        loadingCanvas.SetActive(true);
+        ShowLoadingScreen();
         SceneManager.LoadSceneAsync("Developers/yurispeondivision/FloorSample", LoadSceneMode.Additive).completed += (AsyncOperation action) =>
         {
             if (action.isDone)
@@ -22,21 +22,24 @@ public class SceneLoader : MonoBehaviour
                 StartCoroutine(SetupFloor());
             }
         };
-        player.GetComponent<NavMeshAgent>().enabled = false;
     }
 
     IEnumerator SetupFloor()
     {
         yield return new WaitForSeconds(0);
-        var spawn = FindObjectOfType<PlayerSpawn>();
+        var spawn = FindObjectOfType<PlayerSpawnPoint>();
         player.transform.position = spawn.transform.position;
-        player.GetComponent<NavMeshAgent>().enabled = true;
-        loadingCanvas.SetActive(false);
+        ShowLoadingScreen(false);
     }
 
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void ShowLoadingScreen(bool show = true)
+    {
+        loadingScreen.SetActive(show);
     }
 
     // Start is called before the first frame update
@@ -45,18 +48,12 @@ public class SceneLoader : MonoBehaviour
         if (SceneManager.sceneCount > 1)
         {
             mainMenu.SetActive(false);
-            loadingCanvas.SetActive(true);
+            ShowLoadingScreen();
             StartCoroutine(SetupFloor());
         }
         else
         {
             mainMenu.SetActive(true);
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }
