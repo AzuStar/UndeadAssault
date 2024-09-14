@@ -10,6 +10,7 @@ namespace UndeadAssault
         float currentY = 0.0f;
         float targetX = 0.0f;
         float targetY = 0.0f;
+        private NTimer _hitTimer;
 
         public void FirePrimaryAttack()
         {
@@ -40,7 +41,26 @@ namespace UndeadAssault
 
         public void PlayHit()
         {
-            animator.SetTrigger(EntityAnimParameters.PlayHit);
+            if (_hitTimer != null)
+            {
+                _hitTimer.Cancel();
+            }
+            // unity made me do it
+            if (animator.GetInteger(EntityAnimParameters.PlayHit) > 0)
+            {
+                animator.SetInteger(EntityAnimParameters.PlayHit, 0);
+                _hitTimer = this.AttachNTimer(
+                    0.01f,
+                    () =>
+                    {
+                        animator.SetInteger(EntityAnimParameters.PlayHit, 1);
+                    }
+                );
+            }
+            else
+            {
+                animator.SetInteger(EntityAnimParameters.PlayHit, 1);
+            }
         }
 
         // Start is called before the first frame update
