@@ -6,6 +6,11 @@ namespace UndeadAssault
     {
         public Stats stats = new Stats();
 
+        protected virtual void Awake()
+        {
+            stats.health = stats.maxHealth;
+        }
+
         public void DealDamage(Entity target, double damage)
         {
             target.stats.health -= damage;
