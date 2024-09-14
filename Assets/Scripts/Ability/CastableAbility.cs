@@ -5,5 +5,6 @@ namespace UndeadAssault
         public float castTime;
         public abstract float cooldownFormula { get; }
         public abstract void CastAbility(Entity target);
+        protected bool _casting = false;
     }
 }

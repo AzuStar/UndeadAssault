@@ -8,6 +8,8 @@ namespace UndeadAssault
     [RequireComponent(typeof(NavMeshAgent))]
     public class PlayerMovement : MonoBehaviour
     {
+        public DashAbility dashAbility;
+
         private NavMeshAgent _navMeshAgent;
         private Stats _stats;
         private EntityAnimManager _animManager;
@@ -45,7 +47,9 @@ namespace UndeadAssault
                 offsetPoint.Normalize();
                 _navMeshAgent.Move(offsetPoint * movementSpeed);
             }
-            var offsetRotated = Quaternion.AngleAxis(transform.rotation.eulerAngles.y, -Vector3.up) * offsetPoint.normalized;
+            var offsetRotated =
+                Quaternion.AngleAxis(transform.rotation.eulerAngles.y, -Vector3.up)
+                * offsetPoint.normalized;
             _animManager.SetLocomotionVector(offsetRotated.x, offsetRotated.z);
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             Plane plane = new Plane(Vector3.up, transform.position);

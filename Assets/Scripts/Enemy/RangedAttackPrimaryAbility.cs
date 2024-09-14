@@ -2,21 +2,22 @@ using UnityEngine;
 
 namespace UndeadAssault
 {
-    public class FierySparkPrimaryAbility : PrimaryAbility
+    public class RangedAttackPrimaryAbility : PrimaryAbility
     {
-        public Projectile sparkProjectile;
+        public double damageMultiplier = 1.00;
+        public float swingAngle = 90f;
+        public override float cooldownFormula => (float)(0.55f / _stats.primaryCdr);
+        public HeadCastPoint headCastPoint;
+        public Projectile projectile;
 
-        public override float cooldownFormula => (float)(0.5f / _stats.primaryCdr);
         private double _cdTimeout;
         private Stats _stats;
-        private HeadCastPoint _headCastPoint;
-        private EntityAnimManager _animManager;
+        private AiComponent _aiComponent;
 
         void Start()
         {
             _stats = GetComponent<Entity>().stats;
-            _headCastPoint = GetComponentInChildren<HeadCastPoint>();
-            _animManager = GetComponent<EntityAnimManager>();
+            headCastPoint = GetComponentInChildren<HeadCastPoint>();
         }
 
         void Update()
@@ -36,19 +37,17 @@ namespace UndeadAssault
         public void LaunchFireball()
         {
             _casting = true;
-            _animManager.FirePrimaryAttack();
             this.AttachNTimer(
                 castTime / _stats.primaryCdr,
                 () =>
                 {
                     Vector3 launchPoint =
-                        _headCastPoint == null
+                        headCastPoint == null
                             ? transform.position
-                            : _headCastPoint.transform.position;
-                    Projectile proj = Instantiate(sparkProjectile, launchPoint, transform.rotation);
+                            : headCastPoint.transform.position;
+                    Projectile proj = Instantiate(projectile, launchPoint, transform.rotation);
                     proj.owner = GetComponent<Entity>();
                     _cdTimeout += cooldownFormula;
-                    _casting = false;
                 }
             );
         }

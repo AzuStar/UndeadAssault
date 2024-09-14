@@ -1,8 +1,9 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace UndeadAssault
 {
-    public class SkeletonMinionPrimaryAbility : PrimaryAbility
+    public class DreadKnightSecondaryAbility : SecondaryAbility
     {
         public double damageMultiplier = 1.00;
         public override float cooldownFormula => (float)(0.55f / _stats.primaryCdr);
@@ -10,6 +11,7 @@ namespace UndeadAssault
         private double _cdTimeout;
         private Stats _stats;
         private AiComponent _aiComponent;
+        private bool casting = false;
 
         void Start()
         {
@@ -19,6 +21,8 @@ namespace UndeadAssault
 
         void Update()
         {
+            if (casting)
+                return;
             if (_cdTimeout > 0)
                 _cdTimeout -= Time.deltaTime;
         }
@@ -27,19 +31,30 @@ namespace UndeadAssault
         {
             if (_cdTimeout <= 0)
             {
-                PerformSwing();
-                _cdTimeout += cooldownFormula;
+                PerformSpin();
             }
         }
 
-        public void PerformSwing()
+        public void PerformSpin()
         {
             _aiComponent.animationPaused = true;
+            casting = true;
             this.AttachNTimer(
-                (float)(castTime / _stats.primaryCdr),
+                castTime / _stats.primaryCdr,
                 () =>
                 {
-                    Debug.Log("Skeleton Minion finish attack");
+                    Utils
+                        .GetEntitiesInRadius(
+                            transform.position,
+                            _stats.attackRange,
+                            entity => entity.tag != transform.tag
+                        )
+                        .ForEach(entity =>
+                        {
+                            Debug.Log("Dread Knight finish attack " + entity.name);
+                        });
+                    _cdTimeout += cooldownFormula;
+                    casting = false;
                     _aiComponent.animationPaused = false;
                 }
             );

@@ -10,6 +10,7 @@ namespace UndeadAssault
         public bool allowAttack => _navMeshAgent.isStopped;
         public bool animationPaused = false;
         public double attackRangeOffset = 0.99;
+        private Entity _self;
         public Entity target;
         private NavMeshAgent _navMeshAgent;
         private Stats _stats;
@@ -17,21 +18,26 @@ namespace UndeadAssault
 
         void Start()
         {
-            _stats = GetComponent<Entity>().stats;
+            _self = GetComponent<Entity>();
+            _stats = _self.stats;
             _navMeshAgent = GetComponent<NavMeshAgent>();
         }
 
         void Update()
         {
+            if (_self.isDead)
+            {
+                return;
+            }
             if (target == null)
                 UpdateTarget();
-            if (animationPaused)
+            if (animationPaused || target == null)
                 return;
             float distance = Vector3.Distance(transform.position, target.transform.position);
             StopWithinAttackRange(distance);
             CastSpells(distance);
 
-            _navMeshAgent.speed = (float)_stats.movementSpeed;
+            _navMeshAgent.speed = _stats.movementSpeed;
             if (_seekTimeout > 0)
                 _seekTimeout -= Time.deltaTime;
 
@@ -40,6 +46,7 @@ namespace UndeadAssault
                 _seekTimeout = 0.5f;
                 Seek();
             }
+            _self._animManager.SetLocomotionVector(0, _navMeshAgent.velocity.normalized.magnitude);
         }
 
         public void UpdateTarget()
@@ -70,8 +77,6 @@ namespace UndeadAssault
 
         public void StopWithinAttackRange(float distance)
         {
-            if (target == null)
-                return;
             if (distance < _stats.attackRange * attackRangeOffset)
             {
                 _navMeshAgent.isStopped = true;
@@ -84,8 +89,6 @@ namespace UndeadAssault
 
         public void Seek()
         {
-            if (target == null)
-                return;
             _navMeshAgent.SetDestination(target.transform.position);
         }
     }

@@ -16,11 +16,5 @@ namespace UndeadAssault
             owner.DealDamage(target, damage);
             Remove();
         }
-
-        // void FixedUpdate()
-        // {
-        //     base.FixedUpdate();
-        //     damageScale *= damageRecovery;
-        // }
     }
 }
