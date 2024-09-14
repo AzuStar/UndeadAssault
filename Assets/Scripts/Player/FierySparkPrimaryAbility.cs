@@ -7,7 +7,7 @@ namespace UndeadAssault
         public Projectile sparkProjectile;
 
         public override float cooldownFormula => (float)(0.5f / _stats.primaryCdr);
-        private double _cdTimeout;
+        private float _cdTimeout;
         private Stats _stats;
         private HeadCastPoint _headCastPoint;
         private EntityAnimManager _animManager;
@@ -21,8 +21,19 @@ namespace UndeadAssault
 
         void Update()
         {
+            RefreshText();
+            if (_casting)
+                return;
             if (_cdTimeout > 0)
                 _cdTimeout -= Time.deltaTime;
+        }
+
+        public void RefreshText()
+        {
+            HudSkillTrackerSingletonGroup.instance.primarySkillTracker.SetCooldown(
+                _cdTimeout,
+                cooldownFormula
+            );
         }
 
         public override void CastAbility(Entity target)

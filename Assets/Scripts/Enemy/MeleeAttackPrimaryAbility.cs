@@ -50,13 +50,13 @@ namespace UndeadAssault
                         .GetEntitiesInCone(
                             transform.position,
                             transform.forward,
-                            swingAngle,
                             _stats.attackRange,
+                            swingAngle,
                             entity => entity.tag != transform.tag
                         )
                         .ForEach(entity =>
                         {
-                            Debug.Log("Melee attack on " + entity.name);
+                            Debug.Log(name + " melee attack on " + entity.name);
                         });
                     _aiComponent.animationPaused = false;
                     _casting = false;

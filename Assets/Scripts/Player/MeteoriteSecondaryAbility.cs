@@ -7,8 +7,8 @@ namespace UndeadAssault
         public float xOffset = 5f;
         public float heightOffset = 10f;
         public MeteoriteProjectile meteoriteProjectile;
-        public override float cooldownFormula => 0.5f / _stats.secondaryCdr;
-        public double cdTimeout;
+        public override float cooldownFormula => 12f / _stats.secondaryCdr;
+        private float _cdTimeout;
         private Stats _stats;
 
         void Start()
@@ -18,15 +18,24 @@ namespace UndeadAssault
 
         void Update()
         {
+            RefreshText();
             if (_casting)
                 return;
-            if (cdTimeout > 0)
-                cdTimeout -= Time.deltaTime;
+            if (_cdTimeout > 0)
+                _cdTimeout -= Time.deltaTime;
+        }
+
+        public void RefreshText()
+        {
+            HudSkillTrackerSingletonGroup.instance.secondarySkillTracker.SetCooldown(
+                _cdTimeout,
+                cooldownFormula
+            );
         }
 
         public override void CastAbility(Entity target)
         {
-            if (cdTimeout <= 0 && !_casting)
+            if (_cdTimeout <= 0 && !_casting)
             {
                 // mouse to ray, only look for environment layer
                 Vector3? impactPoint = null;
@@ -63,7 +72,7 @@ namespace UndeadAssault
                     );
                     proj.impactPoint = impactPoint;
                     proj.owner = GetComponent<Entity>();
-                    cdTimeout += cooldownFormula;
+                    _cdTimeout += cooldownFormula;
                     _casting = false;
                 }
             );

@@ -4,11 +4,13 @@ namespace UndeadAssault
 {
     public class DashAbility : CastableAbility
     {
+        public float dashDistance = 10f;
         public override float cooldownFormula => 1.25f;
 
         private float _cdTimeout;
         private Stats _stats;
         private PlayerMovement _playerMovement;
+        private Vector3 _dashDirection;
 
         void Start()
         {
@@ -18,26 +20,40 @@ namespace UndeadAssault
 
         void Update()
         {
+            RefreshText();
+            if (_casting)
+            {
+                _playerMovement.movementPush = _dashDirection * dashDistance * castTime;
+                return;
+            }
             if (_cdTimeout > 0)
                 _cdTimeout -= Time.deltaTime;
         }
 
-        public override void CastAbility(Entity target)
+        public void RefreshText()
         {
-            if (_cdTimeout <= 0 && !_casting)
-            {
-                PerformDash();
-                _cdTimeout += cooldownFormula;
-            }
+            HudSkillTrackerSingletonGroup.instance.dashSkillTracker.SetCooldown(
+                _cdTimeout,
+                cooldownFormula
+            );
         }
 
-        public void PerformDash()
+        public void CastDash(Vector3 dashDirection)
         {
+            if (_cdTimeout <= 0 && !_casting)
+                PerformDash(dashDirection);
+        }
+
+        public void PerformDash(Vector3 dashDirection)
+        {
+            _cdTimeout += cooldownFormula;
+            _dashDirection = dashDirection;
+            _casting = true;
             this.AttachNTimer(
-                1,
+                castTime,
                 () =>
                 {
-                    this.transform.position += this.transform.forward * 0.1f;
+                    _casting = false;
                 }
             );
         }
