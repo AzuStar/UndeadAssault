@@ -2,14 +2,16 @@ using UnityEngine;
 
 namespace UndeadAssault
 {
-    public class SkeletonMinionPrimaryAbility : PrimaryAbility
+    public class MeleeAttackPrimaryAbility : PrimaryAbility
     {
         public double damageMultiplier = 1.00;
+        public float swingAngle = 90f;
         public override float cooldownFormula => (float)(0.55f / _stats.primaryCdr);
 
         private double _cdTimeout;
         private Stats _stats;
         private AiComponent _aiComponent;
+        private bool casting = false;
 
         void Start()
         {
@@ -19,6 +21,8 @@ namespace UndeadAssault
 
         void Update()
         {
+            if (casting)
+                return;
             if (_cdTimeout > 0)
                 _cdTimeout -= Time.deltaTime;
         }
@@ -34,13 +38,26 @@ namespace UndeadAssault
 
         public void PerformSwing()
         {
+            casting = true;
             _aiComponent.animationPaused = true;
             this.AttachNTimer(
-                (float)(castTime / _stats.primaryCdr),
+                castTime / _stats.primaryCdr,
                 () =>
                 {
-                    Debug.Log("Skeleton Minion finish attack");
+                    Utils
+                        .GetEntitiesInCone(
+                            transform.position,
+                            transform.forward,
+                            swingAngle,
+                            _stats.attackRange,
+                            entity => entity.tag != transform.tag
+                        )
+                        .ForEach(entity =>
+                        {
+                            Debug.Log("Melee attack on " + entity.name);
+                        });
                     _aiComponent.animationPaused = false;
+                    casting = false;
                 }
             );
         }
