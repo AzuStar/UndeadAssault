@@ -10,11 +10,13 @@ namespace UndeadAssault
         private double _cdTimeout;
         private Stats _stats;
         private HeadCastPoint _headCastPoint;
+        private EntityAnimManager _animManager;
 
         void Start()
         {
             _stats = GetComponent<Entity>().stats;
             _headCastPoint = GetComponentInChildren<HeadCastPoint>();
+            _animManager = GetComponent<EntityAnimManager>();
         }
 
         void Update()
@@ -38,6 +40,7 @@ namespace UndeadAssault
                 _headCastPoint == null ? transform.position : _headCastPoint.transform.position;
             Projectile proj = Instantiate(sparkProjectile, launchPoint, transform.rotation);
             proj.owner = GetComponent<Entity>();
+            _animManager.FirePrimaryAttack();
         }
     }
 }
