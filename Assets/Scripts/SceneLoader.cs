@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
@@ -8,25 +9,29 @@ public class SceneLoader : MonoBehaviour
     public GameObject mainMenu;
     public GameObject loadingCanvas;
 
+    public GameObject player;
+
     public void StartGame()
     {
-        // SceneManager.LoadSceneAsync
         mainMenu.SetActive(false);
         loadingCanvas.SetActive(true);
-        SceneManager.LoadSceneAsync("Scenes/SampleScene", LoadSceneMode.Additive).completed += (AsyncOperation action) =>
+        SceneManager.LoadSceneAsync("Developers/yurispeondivision/FloorSample", LoadSceneMode.Additive).completed += (AsyncOperation action) =>
         {
             if (action.isDone)
             {
-                loadingCanvas.SetActive(false);
-                PostStartFloor();
+                StartCoroutine(SetupFloor());
             }
         };
+        player.GetComponent<NavMeshAgent>().enabled = false;
     }
 
-    public void PostStartFloor()
+    IEnumerator SetupFloor()
     {
-        Debug.Log("Preparing floor");
-        // TODO spawn enemies etc
+        yield return new WaitForSeconds(0);
+        var spawn = FindObjectOfType<PlayerSpawn>();
+        player.transform.position = spawn.transform.position;
+        player.GetComponent<NavMeshAgent>().enabled = true;
+        loadingCanvas.SetActive(false);
     }
 
     public void QuitGame()
@@ -40,7 +45,8 @@ public class SceneLoader : MonoBehaviour
         if (SceneManager.sceneCount > 1)
         {
             mainMenu.SetActive(false);
-            PostStartFloor();
+            loadingCanvas.SetActive(true);
+            StartCoroutine(SetupFloor());
         }
         else
         {
@@ -51,5 +57,6 @@ public class SceneLoader : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
     }
 }
