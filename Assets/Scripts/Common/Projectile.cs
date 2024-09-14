@@ -52,7 +52,7 @@ namespace UndeadAssault
         void OnTriggerEnter(Collider other)
         {
             if (other.tag == GameConstants.TAG_ENVIRONMENT)
-                Remove();
+                OnTerrainCollision(other.ClosestPointOnBounds(transform.position));
             Entity et;
             et = other.GetComponent<Entity>();
             if (et != null)
@@ -75,6 +75,11 @@ namespace UndeadAssault
             Destroy(gameObject);
         }
 
-        protected abstract void OnCollision(Entity target);
+        protected virtual void OnCollision(Entity target) { }
+
+        protected virtual void OnTerrainCollision(Vector3 collisionPoint)
+        {
+            Remove();
+        }
     }
 }

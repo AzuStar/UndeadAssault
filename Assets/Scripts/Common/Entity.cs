@@ -9,12 +9,10 @@ namespace UndeadAssault
         public EntityAnimManager _animManager;
         public bool isDead = false;
 
-
         void Start()
         {
             _animManager = GetComponent<EntityAnimManager>();
         }
-
 
         protected virtual void Awake()
         {
@@ -23,6 +21,7 @@ namespace UndeadAssault
 
         public void DealDamage(Entity target, double damage)
         {
+            target._animManager.PlayHit();
             target.stats.health -= damage;
             if (target.stats.health <= 0)
             {
