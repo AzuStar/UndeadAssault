@@ -11,7 +11,6 @@ namespace UndeadAssault
         private double _cdTimeout;
         private Stats _stats;
         private AiComponent _aiComponent;
-        private bool casting = false;
 
         void Start()
         {
@@ -21,7 +20,7 @@ namespace UndeadAssault
 
         void Update()
         {
-            if (casting)
+            if (_casting)
                 return;
             if (_cdTimeout > 0)
                 _cdTimeout -= Time.deltaTime;
@@ -29,7 +28,7 @@ namespace UndeadAssault
 
         public override void CastAbility(Entity target)
         {
-            if (_cdTimeout <= 0)
+            if (_cdTimeout <= 0 && !_casting)
             {
                 PerformSwing();
                 _cdTimeout += cooldownFormula;
@@ -38,7 +37,7 @@ namespace UndeadAssault
 
         public void PerformSwing()
         {
-            casting = true;
+            _casting = true;
             _aiComponent.animationPaused = true;
             this.AttachNTimer(
                 castTime / _stats.primaryCdr,
@@ -57,7 +56,7 @@ namespace UndeadAssault
                             Debug.Log("Melee attack on " + entity.name);
                         });
                     _aiComponent.animationPaused = false;
-                    casting = false;
+                    _casting = false;
                 }
             );
         }

@@ -632,22 +632,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 95529944}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e620c73c9a186d438b94a24e4290d0d, type: 3}
+  m_Script: {fileID: 11500000, guid: ce60160e999fc2143b0de33602ab9e9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  castTime: 0.45
+  castTime: 0.55
   damageMultiplier: 1
-  _cdTimeout: 0
-  _stats:
-    attack: 0
-    health: 0
-    maxHealth: 0
-    attackRange: 0
-    primaryCdr: 0
-    secondaryCdr: 0
-    movementSpeed: 0
-  _aiComponent: {fileID: 0}
-  casting: 0
+  swingAngle: 90
 --- !u!1 &118478817
 GameObject:
   m_ObjectHideFlags: 0
@@ -9244,6 +9234,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1968630258968496422, guid: cf2bdfeb7245c37478c01e0b07f386b3, type: 3}
+      propertyPath: castTime
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4233269168159447877, guid: cf2bdfeb7245c37478c01e0b07f386b3, type: 3}
+      propertyPath: castTime
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 7306283601768909065, guid: cf2bdfeb7245c37478c01e0b07f386b3, type: 3}
       propertyPath: m_Name
       value: Mage
