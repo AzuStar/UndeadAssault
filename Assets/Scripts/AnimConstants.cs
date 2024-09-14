@@ -13,6 +13,7 @@ namespace UndeadAssault
         public const string FireSecondaryAttack = "FireSecondaryAttack";
         public const string FinishSecondaryAttack = "FinishSecondaryAttack";
         public const string PlayDeath = "PlayDeath";
+        public const string PlayHit = "PlayHit";
     }
 
     static class EntityAnimLayers

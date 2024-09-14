@@ -14,6 +14,7 @@ namespace UndeadAssault
 
             double damage = owner.stats.attack * damagePercent;
             owner.DealDamage(target, damage);
+            target._animManager.PlayHit();
             Remove();
         }
 
