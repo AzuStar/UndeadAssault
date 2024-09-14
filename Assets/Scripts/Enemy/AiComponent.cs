@@ -27,7 +27,9 @@ namespace UndeadAssault
                 UpdateTarget();
             if (animationPaused)
                 return;
-            StopWithinAttackRange();
+            float distance = Vector3.Distance(transform.position, target.transform.position);
+            StopWithinAttackRange(distance);
+            CastSpells(distance);
 
             _navMeshAgent.speed = (float)_stats.movementSpeed;
             if (_seekTimeout > 0)
@@ -45,11 +47,31 @@ namespace UndeadAssault
             target = Gamemode.instance.hero;
         }
 
-        public void StopWithinAttackRange()
+        public void CastSpells(float distance)
+        {
+            if (distance < _stats.attackRange)
+            {
+                if (animationPaused)
+                    return;
+                SecondaryAbility secondaryAbility = GetComponent<SecondaryAbility>();
+                if (secondaryAbility != null)
+                {
+                    secondaryAbility.CastAbility(target);
+                }
+                if (animationPaused)
+                    return;
+                PrimaryAbility primaryAbility = GetComponent<PrimaryAbility>();
+                if (primaryAbility != null)
+                {
+                    primaryAbility.CastAbility(target);
+                }
+            }
+        }
+
+        public void StopWithinAttackRange(float distance)
         {
             if (target == null)
                 return;
-            float distance = Vector3.Distance(transform.position, target.transform.position);
             if (distance < _stats.attackRange * attackRangeOffset)
             {
                 _navMeshAgent.isStopped = true;

@@ -3,19 +3,18 @@ using UnityEngine.AI;
 
 namespace UndeadAssault
 {
-    [RequireComponent(typeof(AiComponent))]
     public class DreadKnightPrimaryAbility : PrimaryAbility
     {
         public double damageMultiplier = 1.00;
-        public override double cooldownFormula => 0.55 / _stats.primaryCdr;
+        public override float cooldownFormula => (float)(0.55f / _stats.primaryCdr);
         private double _cdTimeout;
         private Stats _stats;
-        private AiComponent _defaultAi;
+        private AiComponent _aiComponent;
 
         void Start()
         {
             _stats = GetComponent<Entity>().stats;
-            _defaultAi = GetComponent<AiComponent>();
+            _aiComponent = GetComponent<AiComponent>();
         }
 
         void Update()
@@ -23,24 +22,24 @@ namespace UndeadAssault
             if (_cdTimeout > 0)
                 _cdTimeout -= Time.deltaTime;
 
-            if (_defaultAi.allowAttack)
-                if (_cdTimeout <= 0)
-                {
-                    CastAbility();
-                    _cdTimeout += cooldownFormula;
-                }
+            // if (_defaultAi.allowAttack)
+            //     if (_cdTimeout <= 0)
+            //     {
+            //         CastAbility();
+            //         _cdTimeout += cooldownFormula;
+            //     }
         }
 
-        public override void CastAbility()
+        public override void CastAbility(Entity target)
         {
-            _defaultAi.animationPaused = true;
+            _aiComponent.animationPaused = true;
             this.AttachNTimer(
-                (float)cooldownFormula,
+                cooldownFormula,
                 () =>
                 {
                     Debug.Log("Skeleton Minion finish attack");
 
-                    _defaultAi.animationPaused = false;
+                    _aiComponent.animationPaused = false;
                 }
             );
         }

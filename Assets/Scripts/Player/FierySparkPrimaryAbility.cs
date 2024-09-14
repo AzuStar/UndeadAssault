@@ -6,7 +6,7 @@ namespace UndeadAssault
     {
         public Projectile sparkProjectile;
 
-        public override double cooldownFormula => 0.5 / _stats.primaryCdr;
+        public override float cooldownFormula => (float)(0.5f / _stats.primaryCdr);
         private double _cdTimeout;
         private Stats _stats;
         private HeadCastPoint _headCastPoint;
@@ -23,18 +23,18 @@ namespace UndeadAssault
         {
             if (_cdTimeout > 0)
                 _cdTimeout -= Time.deltaTime;
+        }
 
-            if (Input.GetMouseButton(0))
+        public override void CastAbility(Entity target)
+        {
+            if (_cdTimeout <= 0)
             {
-                if (_cdTimeout <= 0)
-                {
-                    CastAbility();
-                    _cdTimeout += cooldownFormula;
-                }
+                LaunchFireball();
+                _cdTimeout += cooldownFormula;
             }
         }
 
-        public override void CastAbility()
+        public void LaunchFireball()
         {
             Vector3 launchPoint =
                 _headCastPoint == null ? transform.position : _headCastPoint.transform.position;
