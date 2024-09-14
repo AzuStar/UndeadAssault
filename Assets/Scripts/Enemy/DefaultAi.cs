@@ -7,6 +7,10 @@ namespace UndeadAssault
     [RequireComponent(typeof(NavMeshAgent))]
     public class DefaultAi : MonoBehaviour
     {
+        public bool allowAttack => _navMeshAgent.isStopped;
+        public bool animationPaused = false;
+        public double attackRangeOffset = 0.99;
+        public Entity target;
         private NavMeshAgent _navMeshAgent;
         private Stats _stats;
         private float _seekTimeout = 0;
@@ -19,6 +23,12 @@ namespace UndeadAssault
 
         void Update()
         {
+            if (target == null)
+                UpdateTarget();
+            if (animationPaused)
+                return;
+            StopWithinAttackRange();
+
             _navMeshAgent.speed = (float)_stats.movementSpeed;
             if (_seekTimeout > 0)
                 _seekTimeout -= Time.deltaTime;
@@ -30,9 +40,31 @@ namespace UndeadAssault
             }
         }
 
+        public void UpdateTarget()
+        {
+            target = Gamemode.instance.hero;
+        }
+
+        public void StopWithinAttackRange()
+        {
+            if (target == null)
+                return;
+            float distance = Vector3.Distance(transform.position, target.transform.position);
+            if (distance < _stats.attackRange * attackRangeOffset)
+            {
+                _navMeshAgent.isStopped = true;
+            }
+            else
+            {
+                _navMeshAgent.isStopped = false;
+            }
+        }
+
         public void Seek()
         {
-            _navMeshAgent.SetDestination(Gamemode.instance.hero.transform.position);
+            if (target == null)
+                return;
+            _navMeshAgent.SetDestination(target.transform.position);
         }
     }
 }
