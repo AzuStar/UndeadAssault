@@ -141,10 +141,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats:
-    attack: 0
-    health: 0
-    primaryCdr: 0
-    secondaryCdr: 0
+    attack: 10
+    health: 100
+    primaryCdr: 1
+    secondaryCdr: 1
     movementSpeed: 5
 --- !u!114 &1968630258968496422
 MonoBehaviour:
