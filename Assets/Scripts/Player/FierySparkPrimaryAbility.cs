@@ -6,7 +6,7 @@ namespace UndeadAssault
     {
         public Projectile sparkProjectile;
 
-        public override double cooldownFormula => 0.5 / (1 + _stats.primaryCdr);
+        public override double cooldownFormula => 0.5 / _stats.primaryCdr;
         private double _cdTimeout;
         private Stats _stats;
         private HeadCastPoint _headCastPoint;
