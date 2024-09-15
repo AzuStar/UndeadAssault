@@ -22,6 +22,10 @@ namespace UndeadAssault
                 (float)_stats.health,
                 (float)_stats.maxHealth
             );
+            HudStatTrackerSingletonGroup.instance.experienceTracker.SetStatText(
+                _stats.experience,
+                _stats.experienceToNextLevel
+            );
         }
     }
 }

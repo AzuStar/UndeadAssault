@@ -7,6 +7,10 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
+    public int floorLevel = 0;
+    public string[] floorPool;
+    public string currentScene;
+
     public GameObject mainMenu;
     public GameObject loadingScreen;
 
@@ -22,7 +26,9 @@ public class SceneLoader : MonoBehaviour
     public void StartFloor(string path)
     {
         player.SetActive(false);
-        SceneManager.LoadSceneAsync(path, LoadSceneMode.Additive).completed += (AsyncOperation action) =>
+        SceneManager.LoadSceneAsync(path, LoadSceneMode.Additive).completed += (
+            AsyncOperation action
+        ) =>
         {
             if (action.isDone)
             {
@@ -42,7 +48,9 @@ public class SceneLoader : MonoBehaviour
         {
             if (SceneManager.GetSceneAt(i).name != "GameMasterScene")
             {
-                SceneManager.UnloadSceneAsync(SceneManager.GetSceneAt(i).buildIndex).completed += (AsyncOperation action) =>
+                SceneManager.UnloadSceneAsync(SceneManager.GetSceneAt(i).buildIndex).completed += (
+                    AsyncOperation action
+                ) =>
                 {
                     if (action.isDone)
                     {

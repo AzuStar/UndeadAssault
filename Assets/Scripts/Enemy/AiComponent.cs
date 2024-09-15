@@ -34,6 +34,11 @@ namespace UndeadAssault
             if (animationPaused || target == null)
                 return;
             float distance = Vector3.Distance(transform.position, target.transform.position);
+            transform.rotation = Quaternion.RotateTowards(
+                transform.rotation,
+                Quaternion.LookRotation(target.transform.position - transform.position),
+                _navMeshAgent.angularSpeed * Time.deltaTime * Random.Range(1f, 10f)
+            );
             StopWithinAttackRange(distance);
             CastSpells(distance);
 
