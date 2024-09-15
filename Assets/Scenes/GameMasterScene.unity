@@ -2532,12 +2532,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5005947951315353254, guid: cf2bdfeb7245c37478c01e0b07f386b3, type: 3}
-      propertyPath: stats.experienceToNextLevelBase
+      propertyPath: stats.dashCdr
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5005947951315353254, guid: cf2bdfeb7245c37478c01e0b07f386b3, type: 3}
+      propertyPath: stats.baseAttack
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5005947951315353254, guid: cf2bdfeb7245c37478c01e0b07f386b3, type: 3}
-      propertyPath: stats.experienceToNextLevelMultiplier
-      value: 4
+      propertyPath: stats.baseMaxHealth
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6652316466909418770, guid: cf2bdfeb7245c37478c01e0b07f386b3, type: 3}
+      propertyPath: cooldown
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7306283601768909065, guid: cf2bdfeb7245c37478c01e0b07f386b3, type: 3}
       propertyPath: m_Name
