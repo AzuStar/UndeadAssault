@@ -203,7 +203,7 @@ MonoBehaviour:
     primaryCdr: 1
     secondaryCdr: 1
     dashCdr: 1
-    movementSpeed: 5
+    movementSpeed: 9
     angularSpeed: 0
   _animManager: {fileID: 0}
   isDead: 0
@@ -220,7 +220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   castTime: 0.25
-  dashDistance: 11
+  dashDistance: 8
   cooldown: 1.25
 --- !u!114 &7294501258941637628
 MonoBehaviour:
