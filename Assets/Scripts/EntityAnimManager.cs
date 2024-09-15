@@ -10,6 +10,7 @@ namespace UndeadAssault
         float currentY = 0.0f;
         float targetX = 0.0f;
         float targetY = 0.0f;
+        private NTimer _hitTimer;
 
         public void FirePrimaryAttack()
         {
@@ -38,6 +39,29 @@ namespace UndeadAssault
             animator.SetLayerWeight(EntityAnimLayers.Action, 0);
         }
 
+        public void PlayHit()
+        {
+            if (_hitTimer != null)
+            {
+                _hitTimer.Cancel();
+            }
+            // unity made me do it
+            if (animator.GetInteger(EntityAnimParameters.PlayHit) > 0)
+            {
+                animator.SetInteger(EntityAnimParameters.PlayHit, 0);
+                _hitTimer = this.AttachNTimer(
+                    0.01f,
+                    () =>
+                    {
+                        animator.SetInteger(EntityAnimParameters.PlayHit, 1);
+                    }
+                );
+            }
+            else
+            {
+                animator.SetInteger(EntityAnimParameters.PlayHit, 1);
+            }
+        }
 
         // Start is called before the first frame update
         void Start()
@@ -52,48 +76,6 @@ namespace UndeadAssault
             currentY = Mathf.Lerp(currentY, targetY, Time.deltaTime * LerpSpeed);
             animator.SetFloat(EntityAnimParameters.X, currentX);
             animator.SetFloat(EntityAnimParameters.Y, currentY);
-            // bool forward = Input.GetKey("w");
-            // bool left = Input.GetKey("a");
-            // bool back = Input.GetKey("s");
-            // bool right = Input.GetKey("d");
-            // x = 0;
-            // z = 0;
-
-            // if (forward)
-            // {
-            //     z += 1.0f;
-            // }
-            // if (left)
-            // {
-            //     x -= 1.0f;
-            // }
-            // if (right)
-            // {
-            //     x += 1.0f;
-            // }
-            // if (back)
-            // {
-            //     z -= 1.0f;
-            // }
-            // if (Input.GetKey(KeyCode.Mouse0))
-            // {
-            //     FirePrimaryAttack();
-            // }
-            // if (Input.GetKey(KeyCode.Mouse1))
-            // {
-            //     FireSecondaryAttack();
-            // }
-            // if (Input.GetKey(KeyCode.Mouse2))
-            // {
-            //     FinishSecondaryAttack();
-            // }
-
-            // if (Input.GetKey(KeyCode.P))
-            // {
-            //     PlayDeath();
-            // }
-
-            // SetLocomotionVector(x, z);
         }
     }
 }

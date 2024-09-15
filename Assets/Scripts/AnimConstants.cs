@@ -2,6 +2,10 @@ namespace UndeadAssault
 {
     static class EntityAnimParameters
     {
+        // ints
+
+        public const string PlayHit = "PlayHit";
+
         // floats
 
         public const string X = "X";

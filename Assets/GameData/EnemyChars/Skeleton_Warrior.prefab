@@ -64,6 +64,9 @@ PrefabInstance:
       addedObject: {fileID: 5892036072734764507}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8508f48b366436e44aa2e6e884405118, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 745975262027728149}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8508f48b366436e44aa2e6e884405118, type: 3}
+      insertIndex: -1
       addedObject: {fileID: -6655656208980793978}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8508f48b366436e44aa2e6e884405118, type: 3}
       insertIndex: -1
@@ -94,6 +97,8 @@ MonoBehaviour:
     primaryCdr: 1
     secondaryCdr: 1
     movementSpeed: 4
+  _animManager: {fileID: 0}
+  isDead: 0
 --- !u!114 &5892036072734764507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,6 +114,21 @@ MonoBehaviour:
   animationPaused: 0
   attackRangeOffset: 0.9
   target: {fileID: 0}
+--- !u!114 &745975262027728149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6507249952205814155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce60160e999fc2143b0de33602ab9e9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  castTime: 0.55
+  damageMultiplier: 1
+  swingAngle: 90
 --- !u!195 &-6655656208980793978
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -8,6 +8,10 @@ namespace UndeadAssault
     [RequireComponent(typeof(NavMeshAgent))]
     public class PlayerMovement : MonoBehaviour
     {
+        public DashAbility dashAbility;
+        public Vector3 movementPush = Vector3.zero;
+        public Vector3 movementNatural = Vector3.zero;
+
         private NavMeshAgent _navMeshAgent;
         private Stats _stats;
         private EntityAnimManager _animManager;
@@ -23,30 +27,42 @@ namespace UndeadAssault
         void Update()
         {
             float movementSpeed = (float)_stats.movementSpeed * Time.deltaTime;
-            Vector3 offsetPoint = Vector3.zero;
             if (Input.GetKey(KeyCode.W))
             {
-                offsetPoint.z += 1;
+                movementNatural.z = 1;
             }
             if (Input.GetKey(KeyCode.S))
             {
-                offsetPoint.z -= 1;
+                movementNatural.z = -1;
             }
             if (Input.GetKey(KeyCode.A))
             {
-                offsetPoint.x -= 1;
+                movementNatural.x = -1;
             }
             if (Input.GetKey(KeyCode.D))
             {
-                offsetPoint.x += 1;
+                movementNatural.x = 1;
             }
-            if (offsetPoint != Vector3.zero)
+            if (movementNatural != Vector3.zero)
             {
-                offsetPoint.Normalize();
-                _navMeshAgent.Move(offsetPoint * movementSpeed);
+                movementNatural.Normalize();
+
+                if (Input.GetKey(KeyCode.Space))
+                {
+                    dashAbility.CastDash(movementNatural);
+                }
             }
-            var offsetRotated = Quaternion.AngleAxis(transform.rotation.eulerAngles.y, -Vector3.up) * offsetPoint.normalized;
+
+            _navMeshAgent.Move((movementNatural + movementPush) * movementSpeed);
+
+            var offsetRotated =
+                Quaternion.AngleAxis(transform.rotation.eulerAngles.y, -Vector3.up)
+                * movementNatural.normalized;
             _animManager.SetLocomotionVector(offsetRotated.x, offsetRotated.z);
+
+            movementNatural = Vector3.zero;
+            movementPush = Vector3.zero;
+
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             Plane plane = new Plane(Vector3.up, transform.position);
             if (plane.Raycast(ray, out float distance))

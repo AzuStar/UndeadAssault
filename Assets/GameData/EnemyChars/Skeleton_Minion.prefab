@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: ede14c710f8967843a22e7b9190316ba, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -34.37397
+      value: -30.72
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ede14c710f8967843a22e7b9190316ba, type: 3}
       propertyPath: m_LocalPosition.y
@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ede14c710f8967843a22e7b9190316ba, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.229861
+      value: 14.18
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ede14c710f8967843a22e7b9190316ba, type: 3}
       propertyPath: m_LocalRotation.w
@@ -71,6 +71,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ede14c710f8967843a22e7b9190316ba, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1078936444935553403}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ede14c710f8967843a22e7b9190316ba, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4703293078393025616}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ede14c710f8967843a22e7b9190316ba, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 91607044851893471}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ede14c710f8967843a22e7b9190316ba, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3350461443547030759}
   m_SourcePrefab: {fileID: 100100000, guid: ede14c710f8967843a22e7b9190316ba, type: 3}
 --- !u!1 &9075699954610139001 stripped
 GameObject:
@@ -92,11 +101,13 @@ MonoBehaviour:
   stats:
     attack: 1
     health: 0
-    maxHealth: 20
-    attackRange: 2
+    maxHealth: 500
+    attackRange: 1.8
     primaryCdr: 1
     secondaryCdr: 1
     movementSpeed: 8
+  _animManager: {fileID: 0}
+  isDead: 0
 --- !u!114 &7044447432854665643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,6 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   castTime: 0.55
   damageMultiplier: 1
+  swingAngle: 90
 --- !u!136 &5071856599347533938
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -171,3 +183,63 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!95 &4703293078393025616
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9075699954610139001}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c06a2f63c6f3a3f41b130013010da3cb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &91607044851893471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9075699954610139001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3433f6329da1b5f4db8317ea830cd0ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!54 &3350461443547030759
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9075699954610139001}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
