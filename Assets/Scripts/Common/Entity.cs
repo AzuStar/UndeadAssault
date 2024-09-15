@@ -4,17 +4,22 @@ using UnityEngine.AI;
 
 namespace UndeadAssault
 {
+    [RequireComponent(typeof(AudioSource))]
     public abstract class Entity : MonoBehaviour
     {
+        public AudioClip[] takeDamageSounds;
+        public AudioClip[] deathSounds;
+
         public int weight = 1;
         public Stats stats = new Stats();
         public EntityAnimManager _animManager;
-        public GameObject deathSoundPrefab;
         public bool isDead = false;
+        private AudioSource _audioSource;
 
         void Start()
         {
             _animManager = GetComponent<EntityAnimManager>();
+            _audioSource = GetComponent<AudioSource>();
         }
 
         protected virtual void Awake()
@@ -51,6 +56,10 @@ namespace UndeadAssault
         public void DealDamage(Entity target, double damage)
         {
             target._animManager.PlayHit();
+            if (target.takeDamageSounds.Length > 0)
+            {
+                target._audioSource.PlayOneShot(target.takeDamageSounds[UnityEngine.Random.Range(0, target.takeDamageSounds.Length)]);
+            }
             target.stats.health -= damage;
             if (target.stats.health <= 0)
             {
@@ -70,30 +79,9 @@ namespace UndeadAssault
             if (_animManager != null)
             {
                 _animManager.PlayDeath();
-                if (name == "Mage")
+                if (deathSounds.Length > 0)
                 {
-                    // 
-                }
-                else
-                {
-                    var obj = Instantiate(deathSoundPrefab, transform.position, transform.rotation);
-                    this.AttachNTimer(2.0f, () =>
-                    {
-                        Destroy(obj);
-                    });
-                }
-                var navMeshAgent = GetComponent<NavMeshAgent>();
-                if (navMeshAgent)
-                {
-                    // 
-                }
-                else
-                {
-                    var obj = Instantiate(deathSoundPrefab, transform.position, transform.rotation);
-                    this.AttachNTimer(2.0f, () =>
-                    {
-                        Destroy(obj);
-                    });
+                    _audioSource.PlayOneShot(deathSounds[UnityEngine.Random.Range(0, deathSounds.Length)]);
                 }
             }
             else
