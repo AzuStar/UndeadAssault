@@ -7,7 +7,9 @@ namespace UndeadAssault
         public float xOffset = 5f;
         public float heightOffset = 10f;
         public MeteoriteProjectile meteoriteProjectile;
-        public override float cooldownFormula => 12f / _stats.secondaryCdr;
+        public override float cooldownFormula => cooldown / _stats.secondaryCdr;
+        public float cooldown = 12f;
+
         private float _cdTimeout;
         private Stats _stats;
 

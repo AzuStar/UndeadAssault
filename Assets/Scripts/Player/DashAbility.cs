@@ -5,8 +5,8 @@ namespace UndeadAssault
     public class DashAbility : CastableAbility
     {
         public float dashDistance = 10f;
-        public override float cooldownFormula => 1.25f;
-
+        public override float cooldownFormula => cooldown / _stats.dashCdr;
+        public float cooldown;
         private float _cdTimeout;
         private Stats _stats;
         private PlayerMovement _playerMovement;

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -19,12 +20,38 @@ namespace UndeadAssault
             stats.health = stats.maxHealth;
         }
 
+        public void AddExperience(float amount)
+        {
+            stats.experience += amount;
+            int levelups = 0;
+            while (true)
+            {
+                if (stats.experience >= stats.experienceToNextLevel)
+                {
+                    stats.experience -= stats.experienceToNextLevel;
+                    stats.level++;
+                    levelups++;
+                }
+                else
+                {
+                    break;
+                }
+            }
+            if (levelups > 0)
+            {
+                LevelUp(levelups);
+            }
+        }
+
+        public virtual void LevelUp(int times) { }
+
         public void DealDamage(Entity target, double damage)
         {
             target._animManager.PlayHit();
             target.stats.health -= damage;
             if (target.stats.health <= 0)
             {
+                AddExperience(target.stats.experienceGranted);
                 target.Die();
             }
         }

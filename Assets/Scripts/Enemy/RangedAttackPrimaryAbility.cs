@@ -50,6 +50,7 @@ namespace UndeadAssault
                     Projectile proj = Instantiate(projectile, launchPoint, transform.rotation);
                     proj.owner = GetComponent<Entity>();
                     _cdTimeout += cooldownFormula;
+                    _casting = false;
                 }
             );
         }
