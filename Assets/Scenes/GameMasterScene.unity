@@ -553,7 +553,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: 0.46174863, y: 0, z: 0, w: 0.8870109}
-  m_LocalPosition: {x: 9.334358, y: 13.045, z: 0.33999968}
+  m_LocalPosition: {x: -10, y: 13.045, z: 0.33999968}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2364,9 +2364,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mage
       objectReference: {fileID: 0}
+    - target: {fileID: 7306283601768909065, guid: cf2bdfeb7245c37478c01e0b07f386b3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7939549915619972019, guid: cf2bdfeb7245c37478c01e0b07f386b3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.334358
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 7939549915619972019, guid: cf2bdfeb7245c37478c01e0b07f386b3, type: 3}
       propertyPath: m_LocalPosition.y
