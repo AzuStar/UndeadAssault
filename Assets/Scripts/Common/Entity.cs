@@ -26,9 +26,10 @@ namespace UndeadAssault
             int levelups = 0;
             while (true)
             {
-                if (stats.experience >= stats.experienceToNextLevel)
+                float expNext = stats.experienceToNextLevel;
+                if (expNext != 0 && stats.experience >= expNext)
                 {
-                    stats.experience -= stats.experienceToNextLevel;
+                    stats.experience -= expNext;
                     stats.level++;
                     levelups++;
                 }

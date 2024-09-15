@@ -7,6 +7,7 @@ namespace UndeadAssault
         public double damagePercent = 1.00;
         public Vector3 impactPoint;
         public float impactRadius = 5;
+        public GameObject indicatorToDestroy;
 
         protected override void FixedUpdate()
         {
@@ -36,6 +37,13 @@ namespace UndeadAssault
                 });
 
             Remove();
+        }
+
+        public override void Remove()
+        {
+            if (indicatorToDestroy != null)
+                Destroy(indicatorToDestroy);
+            base.Remove();
         }
 
         void OnDrawGizmos()

@@ -10,6 +10,7 @@ public class RoomTrigger : MonoBehaviour
     List<EnemySpawnPoint> _enemySpawnPoints = new List<EnemySpawnPoint>();
     public GameObject[] enemyPrefabs;
     private List<GameObject> _roomEnemies = new List<GameObject>();
+
     void OnDrawGizmos()
     {
         foreach (var collider in GetComponents<BoxCollider>())
@@ -28,7 +29,10 @@ public class RoomTrigger : MonoBehaviour
         {
             foreach (var collider in GetComponents<BoxCollider>())
             {
-                if (collider.bounds.Contains(spawnPoint.transform.position) && !_enemySpawnPoints.Contains(spawnPoint))
+                if (
+                    collider.bounds.Contains(spawnPoint.transform.position)
+                    && !_enemySpawnPoints.Contains(spawnPoint)
+                )
                 {
                     _enemySpawnPoints.Add(spawnPoint);
                 }
@@ -44,10 +48,7 @@ public class RoomTrigger : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-
-    }
+    void Update() { }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -62,7 +63,14 @@ public class RoomTrigger : MonoBehaviour
             {
                 if (enemyPrefabs.Length > 0)
                 {
-                    _roomEnemies.Add(Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], spawn.transform.position, spawn.transform.rotation));
+                    _roomEnemies.Add(
+                        Instantiate(
+                            enemyPrefabs[Random.Range(0, enemyPrefabs.Length)],
+                            spawn.transform.position,
+                            spawn.transform.rotation,
+                            transform
+                        )
+                    );
                 }
             }
             roomInitialized = true;
@@ -75,7 +83,6 @@ public class RoomTrigger : MonoBehaviour
                 enemy.GetComponent<CapsuleCollider>().enabled = true;
             }
         }
-
     }
 
     void OnTriggerExit(Collider other)
