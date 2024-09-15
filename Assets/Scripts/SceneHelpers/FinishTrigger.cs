@@ -26,6 +26,7 @@ public class FinishTrigger : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         enabled = false;
+        SimpleAudioManager.Manager.instance.SetIntensity(0);
         Gamemode.instance.floor++;
         // _sceneLoader.ShowLoadingScreen();
         SceneTransition.instance.FadeOut();
