@@ -69,8 +69,17 @@ public class SceneLoader : MonoBehaviour
         {
             player.transform.position = spawn.transform.position;
         }
-        ShowLoadingScreen(false);
+        // ShowLoadingScreen(false);
         player.SetActive(true);
+        SceneTransition.instance.FadeIn();
+        FloorScreen.instance.FadeOut();
+        SimpleAudioManager.Manager.instance.SetIntensity(2);
+        // SimpleAudioManager.Manager.instance.
+        // SimpleAudioManager.Manager.instance.PlaySong(new SimpleAudioManager.Manager.PlaySongOptions()
+        // {
+        //     song = 0,
+        //     intensity = 2,
+        // });
     }
 
     public void QuitGame()
@@ -90,7 +99,7 @@ public class SceneLoader : MonoBehaviour
         if (SceneManager.sceneCount > 1)
         {
             mainMenu.SetActive(false);
-            ShowLoadingScreen();
+            // ShowLoadingScreen();
             StartCoroutine(SetupFloor());
         }
         else

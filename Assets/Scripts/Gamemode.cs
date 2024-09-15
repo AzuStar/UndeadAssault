@@ -7,6 +7,8 @@ namespace UndeadAssault
         public static Gamemode instance;
         public Entity hero;
 
+        public int floor = 1;
+
         void Awake()
         {
             instance = this;
