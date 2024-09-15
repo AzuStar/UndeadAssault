@@ -11,13 +11,15 @@ namespace UndeadAssault
         public GenericProjectile projectile;
 
         private double _cdTimeout;
+        private Entity _entity;
         private Stats _stats;
         private AiComponent _aiComponent;
         private HeadCastPoint _headCastPoint;
 
         void Start()
         {
-            _stats = GetComponent<Entity>().stats;
+            _entity = GetComponent<Entity>();
+            _stats = _entity.stats;
             _headCastPoint = GetComponentInChildren<HeadCastPoint>();
             _aiComponent = GetComponent<AiComponent>();
         }
@@ -42,6 +44,7 @@ namespace UndeadAssault
         {
             _casting = true;
             _aiComponent.animationPaused = true;
+            _entity._animManager.FirePrimaryAttack();
             this.AttachNTimer(
                 castTime / _stats.primaryCdr,
                 () =>
