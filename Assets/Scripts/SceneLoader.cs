@@ -19,7 +19,7 @@ public class SceneLoader : MonoBehaviour
     public void StartGame()
     {
         mainMenu.SetActive(false);
-        ShowLoadingScreen();
+        SceneTransition.instance.FadeIn();
         StartFloor("Scenes/FloorSample");
     }
 

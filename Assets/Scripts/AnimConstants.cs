@@ -23,5 +23,6 @@ namespace UndeadAssault
     {
         public const int Base = 0;
         public const int Action = 1;
+        public const int Hit = 2;
     }
 }
