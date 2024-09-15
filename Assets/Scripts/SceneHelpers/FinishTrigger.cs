@@ -25,6 +25,6 @@ public class FinishTrigger : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         _sceneLoader.ShowLoadingScreen();
-        // TODO load next level
+        _sceneLoader.StartNextFloor();
     }
 }

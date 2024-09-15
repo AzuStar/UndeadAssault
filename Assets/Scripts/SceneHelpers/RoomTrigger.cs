@@ -1,12 +1,15 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
+using UndeadAssault;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class RoomTrigger : MonoBehaviour
 {
     int _isInTheRoom = 0;
+    bool roomInitialized = false;
     List<EnemySpawnPoint> _enemySpawnPoints = new List<EnemySpawnPoint>();
+    public GameObject[] enemyPrefabs;
+    private List<GameObject> _roomEnemies = new List<GameObject>();
     void OnDrawGizmos()
     {
         foreach (var collider in GetComponents<BoxCollider>())
@@ -31,6 +34,15 @@ public class RoomTrigger : MonoBehaviour
                 }
             }
         }
+        Debug.Log("Started sceneloader" + _enemySpawnPoints.Count);
+    }
+
+    public void Cleanup()
+    {
+        foreach (var enemy in _roomEnemies)
+        {
+            Destroy(enemy);
+        }
     }
 
     void Update()
@@ -40,19 +52,49 @@ public class RoomTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        _isInTheRoom++;
-        if (_isInTheRoom == 1)
+        if (other.gameObject.name != "Mage")
         {
-            // TODO use _enemySpawnPoints here
+            return;
         }
+        _isInTheRoom++;
+        if (!roomInitialized)
+        {
+            foreach (var spawn in _enemySpawnPoints)
+            {
+                if (enemyPrefabs.Length > 0)
+                {
+                    _roomEnemies.Add(Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], spawn.transform.position, spawn.transform.rotation));
+                }
+            }
+            roomInitialized = true;
+        }
+        else
+        {
+            foreach (var enemy in _roomEnemies)
+            {
+                enemy.GetComponent<AiComponent>().enabled = true;
+                enemy.GetComponent<CapsuleCollider>().enabled = true;
+            }
+        }
+
     }
 
     void OnTriggerExit(Collider other)
     {
+        if (other.gameObject.name != "Mage")
+        {
+            return;
+        }
         _isInTheRoom--;
         if (_isInTheRoom == 0)
         {
-            // TODO disable enemies/despawn here
+            foreach (var enemy in _roomEnemies)
+            {
+                enemy.GetComponent<AiComponent>().enabled = false;
+                enemy.GetComponent<NavMeshAgent>().isStopped = true;
+                enemy.GetComponent<EntityAnimManager>().SetLocomotionVector(0, 0);
+                enemy.GetComponent<CapsuleCollider>().enabled = false;
+            }
         }
     }
 }
