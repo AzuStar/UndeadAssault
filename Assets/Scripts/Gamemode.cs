@@ -1,3 +1,4 @@
+using UnityEditor.SearchService;
 using UnityEngine;
 
 namespace UndeadAssault
@@ -8,6 +9,7 @@ namespace UndeadAssault
         public Entity hero;
 
         public Entity[] enemyTypes;
+        public string[] floorScenes;
 
         public int floor = 1;
         public int baseFloorWeight = 10;

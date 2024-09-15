@@ -157,6 +157,9 @@ MonoBehaviour:
   - {fileID: 8316306885001013925, guid: d78d7c3932b0e0c488d85a1f77efb3a2, type: 3}
   - {fileID: 7841147734810100816, guid: 216830006ad680a49bf311cee1b1ebe5, type: 3}
   - {fileID: 4160646723035776070, guid: b8885deaadcf33046b7b474d1da42736, type: 3}
+  floorScenes:
+  - Floor_1
+  - Floor_2
   floor: 1
   baseFloorWeight: 10
   floorWeight: 20

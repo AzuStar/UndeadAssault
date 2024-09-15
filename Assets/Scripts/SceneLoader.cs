@@ -20,7 +20,7 @@ public class SceneLoader : MonoBehaviour
     {
         mainMenu.SetActive(false);
         SceneTransition.instance.FadeIn();
-        StartFloor("Scenes/FloorSample");
+        StartFloor("Scenes/" + Gamemode.instance.floorScenes[0]);
     }
 
     public void StartFloor(string path)
@@ -54,7 +54,7 @@ public class SceneLoader : MonoBehaviour
                 {
                     if (action.isDone)
                     {
-                        StartFloor("Scenes/FloorSample");
+                        StartFloor("Scenes/" + Gamemode.instance.floorScenes[Random.Range(0, Gamemode.instance.floorScenes.Length)]);
                     }
                 };
             }
