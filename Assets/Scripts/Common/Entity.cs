@@ -51,6 +51,7 @@ namespace UndeadAssault
             target.stats.health -= damage;
             if (target.stats.health <= 0)
             {
+                AddExperience(target.stats.experienceGranted);
                 target.Die();
             }
         }

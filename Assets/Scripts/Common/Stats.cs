@@ -11,6 +11,7 @@ namespace UndeadAssault
         public float experienceToNextLevelBase;
         public float experienceToNextLevelMultiplier;
         public float doubleExpChance;
+        public float experienceGranted;
         public int level;
 
         public double attack => baseAttack * (1 + bonusAttack);
