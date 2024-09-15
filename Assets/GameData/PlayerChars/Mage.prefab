@@ -178,11 +178,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   takeDamageSounds:
-  - {fileID: 8300000, guid: 416b39510f66f3f479455d0fa9bb3ca8, type: 3}
-  - {fileID: 8300000, guid: 1040d0869b25a8244950182ede588362, type: 3}
-  - {fileID: 8300000, guid: 57ea3988c006568459839493b1cfebcb, type: 3}
-  - {fileID: 8300000, guid: 9a204080bfcb3c84aae88aefcb7e47f2, type: 3}
-  - {fileID: 8300000, guid: 18685364acd06be4bbd459fc88ab5850, type: 3}
+  - {fileID: 8300000, guid: 43b04d0b39c486b43a836dc8a50a4e8f, type: 3}
+  - {fileID: 8300000, guid: d7a04cad391af60428287df7bc449cc3, type: 3}
+  - {fileID: 8300000, guid: bb0041fdb01318a4bb87d200af2de8ca, type: 3}
+  - {fileID: 8300000, guid: 8bd0639672a07524098e73c268869be1, type: 3}
   deathSounds:
   - {fileID: 8300000, guid: b619634c25f2eaf4e8b7234aa97488a4, type: 3}
   weight: 1
@@ -380,7 +379,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
