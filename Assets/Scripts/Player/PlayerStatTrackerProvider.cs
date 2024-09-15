@@ -19,8 +19,8 @@ namespace UndeadAssault
         public void RefreshStats()
         {
             HudStatTrackerSingletonGroup.instance.healthTracker.SetStatText(
-                (float)_stats.health,
-                (float)_stats.maxHealth
+                _stats.health,
+                _stats.maxHealth
             );
             HudStatTrackerSingletonGroup.instance.experienceTracker.SetStatText(
                 _stats.experience,
