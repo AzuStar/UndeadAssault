@@ -5,6 +5,7 @@ namespace UndeadAssault
 {
     public class DreadKnightSecondaryAbility : SecondaryAbility
     {
+        public AudioSource audioSource;
         public float rangeMultiplier = 2.50f;
         public RangeIndicator rangeIndicator;
         public double damageMultiplier = 1.00;
@@ -43,6 +44,7 @@ namespace UndeadAssault
         {
             _aiComponent.animationPaused = true;
             _entity._animManager.FireSecondaryAttack();
+            audioSource.Play();
             _casting = true;
             RangeIndicator indicator = Instantiate(
                 rangeIndicator,

@@ -26,7 +26,7 @@ public class FinishTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (used)
+        if (used || other.tag != GameConstants.TAG_PLAYER)
         {
             return;
         }
