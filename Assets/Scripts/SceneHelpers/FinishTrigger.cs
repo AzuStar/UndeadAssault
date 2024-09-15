@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UndeadAssault;
 using UnityEngine;
 
 public class FinishTrigger : MonoBehaviour
@@ -24,7 +25,25 @@ public class FinishTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        _sceneLoader.ShowLoadingScreen();
-        _sceneLoader.StartNextFloor();
+        enabled = false;
+        SimpleAudioManager.Manager.instance.SetIntensity(0);
+        Gamemode.instance.floor++;
+        // _sceneLoader.ShowLoadingScreen();
+        SceneTransition.instance.FadeOut();
+        this.AttachNTimer(
+            1.0f,
+            () =>
+            {
+                FloorScreen.instance.FadeIn();
+                this.AttachNTimer(
+                    2.0f,
+                    () =>
+                    {
+                        _sceneLoader.StartNextFloor();
+                    }
+                );
+
+            }
+        );
     }
 }

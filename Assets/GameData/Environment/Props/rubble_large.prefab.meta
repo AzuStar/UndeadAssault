@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/GameData/Environment/Props/rubble_large.prefab.meta
 guid: 57bc0e7e6ade2304db0e0b00c17506f4
 PrefabImporter:
+========
+guid: 57179fd06ff739a459cd01c892b299ff
+folderAsset: yes
+DefaultImporter:
+>>>>>>>> efd3adcbf21fcff124863ebf2f408a6f250d7e69:Assets/Scenes/Floor_2.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

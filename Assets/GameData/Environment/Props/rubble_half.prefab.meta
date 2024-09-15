@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/GameData/Environment/Props/rubble_half.prefab.meta
 guid: 0c5db02dbc159ab41933211cc23f3d9c
 PrefabImporter:
+========
+guid: ec6cba338cce50f48983c6358ab5ef4e
+folderAsset: yes
+DefaultImporter:
+>>>>>>>> efd3adcbf21fcff124863ebf2f408a6f250d7e69:Assets/Res/Ovani.meta
   externalObjects: {}
   userData: 
   assetBundleName: 
