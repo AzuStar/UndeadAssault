@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37155ff8e3ae2634e8d74ddf499e51cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weight: 1
+  weight: 5
   stats:
     experience: 0
     experienceToNextLevelBase: 0
@@ -110,9 +110,9 @@ MonoBehaviour:
     doubleExpChance: 0
     experienceGranted: 1
     level: 0
-    baseAttack: 0
+    baseAttack: 6
     bonusAttack: 0
-    baseMaxHealth: 0
+    baseMaxHealth: 120
     bonusMaxHealth: 0
     secondaryDamageAmplifier: 0
     damageReduction: 0
@@ -121,7 +121,8 @@ MonoBehaviour:
     primaryCdr: 1
     secondaryCdr: 1
     dashCdr: 0
-    movementSpeed: 4
+    movementSpeed: 6
+    angularSpeed: 250
   _animManager: {fileID: 0}
   deathSoundPrefab: {fileID: 0}
   isDead: 0
@@ -153,9 +154,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   castTime: 1.2
-  rangeMultiplier: 2.5
+  rangeMultiplier: 2
   rangeIndicator: {fileID: 3574340384032839284, guid: 88f9b20aaf330ad4a8c13d0c422ae36a, type: 3}
-  damageMultiplier: 1
+  damageMultiplier: 10
   cooldown: 4
 --- !u!114 &745975262027728149
 MonoBehaviour:
@@ -182,11 +183,11 @@ NavMeshAgent:
   m_GameObject: {fileID: 6507249952205814155}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 1
+  m_Radius: 0.5
   m_Speed: 3.5
-  m_Acceleration: 35
+  m_Acceleration: 50
   avoidancePriority: 50
-  m_AngularSpeed: 220
+  m_AngularSpeed: 250
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1

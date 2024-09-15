@@ -162,6 +162,7 @@ MonoBehaviour:
   - Floor_2
   floor: 1
   baseFloorWeight: 10
+  multiFloorWeight: 2
   floorWeight: 20
 --- !u!4 &207931334
 Transform:
@@ -3131,6 +3132,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1968630258968496422, guid: cf2bdfeb7245c37478c01e0b07f386b3, type: 3}
+      propertyPath: castTime
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1968630258968496422, guid: cf2bdfeb7245c37478c01e0b07f386b3, type: 3}
+      propertyPath: cooldown
+      value: 0.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 5005947951315353254, guid: cf2bdfeb7245c37478c01e0b07f386b3, type: 3}
+      propertyPath: stats.baseMaxHealth
+      value: 1000000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5005947951315353254, guid: cf2bdfeb7245c37478c01e0b07f386b3, type: 3}
+      propertyPath: stats.movementSpeed
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6652316466909418770, guid: cf2bdfeb7245c37478c01e0b07f386b3, type: 3}
+      propertyPath: castTime
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6652316466909418770, guid: cf2bdfeb7245c37478c01e0b07f386b3, type: 3}
+      propertyPath: cooldown
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6652316466909418770, guid: cf2bdfeb7245c37478c01e0b07f386b3, type: 3}
+      propertyPath: dashDistance
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 7306283601768909065, guid: cf2bdfeb7245c37478c01e0b07f386b3, type: 3}
       propertyPath: m_Name
       value: Mage

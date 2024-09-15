@@ -8,6 +8,7 @@ public class FinishTrigger : MonoBehaviour
 {
     private SceneLoader _sceneLoader;
     bool used = false;
+
     void OnDrawGizmos()
     {
         foreach (var collider in GetComponents<BoxCollider>())
@@ -47,7 +48,6 @@ public class FinishTrigger : MonoBehaviour
                         _sceneLoader.StartNextFloor();
                     }
                 );
-
             }
         );
     }

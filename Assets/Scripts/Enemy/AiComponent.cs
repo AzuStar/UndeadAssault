@@ -46,6 +46,8 @@ namespace UndeadAssault
             CastSpells(distance);
 
             _navMeshAgent.speed = _stats.movementSpeed;
+            _navMeshAgent.velocity =
+                _navMeshAgent.desiredVelocity.normalized * _stats.movementSpeed;
             if (_seekTimeout > 0)
                 _seekTimeout -= Time.deltaTime;
 

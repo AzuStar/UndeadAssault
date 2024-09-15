@@ -11,19 +11,21 @@ namespace UndeadAssault
         public Entity[] enemyTypes;
         public string[] floorScenes;
 
-        public int floor = 1;
-        public int baseFloorWeight = 10;
-        public int floorWeight = 20;
+        public int floor = 0;
+        public int baseFloorWeight = 8;
+        public int multiFloorWeight = 2;
+        public int floorWeight;
 
         void Awake()
         {
             instance = this;
+            NextFloor();
         }
 
         public void NextFloor()
         {
             floor++;
-            floorWeight = baseFloorWeight + (floor * 6);
+            floorWeight = baseFloorWeight + (floor * multiFloorWeight);
         }
     }
 }

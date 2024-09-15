@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -62,6 +63,7 @@ namespace UndeadAssault
         public void Die()
         {
             isDead = true;
+            GetComponents<CastableAbility>().ToList().ForEach(ability => Destroy(ability));
             var collider = GetComponent<CapsuleCollider>();
             if (collider)
             {
@@ -72,28 +74,41 @@ namespace UndeadAssault
                 _animManager.PlayDeath();
                 if (name == "Mage")
                 {
-                    // 
+                    //
                 }
                 else
                 {
-                    var obj = Instantiate(deathSoundPrefab, transform.position, transform.rotation);
-                    this.AttachNTimer(2.0f, () =>
+                    if (deathSoundPrefab != null)
                     {
-                        Destroy(obj);
-                    });
+                        var obj = Instantiate(
+                            deathSoundPrefab,
+                            transform.position,
+                            transform.rotation
+                        );
+                        this.AttachNTimer(
+                            2.0f,
+                            () =>
+                            {
+                                Destroy(obj);
+                            }
+                        );
+                    }
                 }
                 var navMeshAgent = GetComponent<NavMeshAgent>();
                 if (navMeshAgent)
                 {
-                    // 
+                    //
                 }
                 else
                 {
                     var obj = Instantiate(deathSoundPrefab, transform.position, transform.rotation);
-                    this.AttachNTimer(2.0f, () =>
-                    {
-                        Destroy(obj);
-                    });
+                    this.AttachNTimer(
+                        2.0f,
+                        () =>
+                        {
+                            Destroy(obj);
+                        }
+                    );
                 }
             }
             else
