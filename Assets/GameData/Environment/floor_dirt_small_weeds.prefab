@@ -52,6 +52,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: floor_dirt_small_weeds
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1a3c7c38ef2195442924e684a4a37381, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1a3c7c38ef2195442924e684a4a37381, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1a3c7c38ef2195442924e684a4a37381, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

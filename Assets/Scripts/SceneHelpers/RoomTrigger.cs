@@ -34,7 +34,6 @@ public class RoomTrigger : MonoBehaviour
                 }
             }
         }
-        Debug.Log("Started sceneloader" + _enemySpawnPoints.Count);
     }
 
     public void Cleanup()
