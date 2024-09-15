@@ -6,6 +6,7 @@ namespace UndeadAssault
     public class RangeIndicator : MonoBehaviour
     {
         public float radius = 2f;
+        public float lineWidth = 0.1f;
         public int segments = 128;
 
         private LineRenderer _lineRenderer;
@@ -13,7 +14,7 @@ namespace UndeadAssault
         public void DrawSegments()
         {
             _lineRenderer.positionCount = segments;
-            _lineRenderer.widthMultiplier = 0.1f; //Math.Min(0.1f, 0.1f / radius);
+            _lineRenderer.widthMultiplier = lineWidth;
             _lineRenderer.loop = true;
             float theta = 360f / segments;
             float angle = 0;

@@ -7,7 +7,6 @@ namespace UndeadAssault
         public double damagePercent = 1.00;
         public Vector3 impactPoint;
         public float impactRadius = 5;
-        public GameObject indicatorToDestroy;
 
         protected override void FixedUpdate()
         {
@@ -16,7 +15,7 @@ namespace UndeadAssault
             transform.position +=
                 transform.forward * speed * (1 + speedScale) * Time.fixedDeltaTime;
             speedScale *= speedRecovery;
-            if (Vector3.Distance(transform.position, impactPoint) < 0.1f)
+            if (Vector3.Distance(transform.position, impactPoint) < 0.25f)
             {
                 Explode();
             }
@@ -37,13 +36,6 @@ namespace UndeadAssault
                 });
 
             Remove();
-        }
-
-        public override void Remove()
-        {
-            if (indicatorToDestroy != null)
-                Destroy(indicatorToDestroy);
-            base.Remove();
         }
 
         void OnDrawGizmos()

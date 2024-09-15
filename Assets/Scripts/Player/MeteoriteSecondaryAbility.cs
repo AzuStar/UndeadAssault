@@ -4,6 +4,7 @@ namespace UndeadAssault
 {
     public class MeteoriteSecondaryAbility : SecondaryAbility
     {
+        public SpecialEffect rangeIndicator;
         public float xOffset = 5f;
         public float heightOffset = 10f;
         public MeteoriteProjectile meteoriteProjectile;
@@ -69,6 +70,11 @@ namespace UndeadAssault
                     );
                     proj.impactPoint = impactPoint;
                     proj.owner = GetComponent<Entity>();
+                    Instantiate(
+                        rangeIndicator,
+                        impactPoint + new Vector3(0, 0.1f, 0),
+                        Quaternion.identity
+                    );
                     _cdTimeout += cooldownFormula;
                     _casting = false;
                 }
