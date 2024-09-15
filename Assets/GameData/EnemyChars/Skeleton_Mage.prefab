@@ -147,13 +147,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats:
+    experience: 0
+    level: 0
     attack: 3
     health: 0
     maxHealth: 45
     attackRange: 7
     primaryCdr: 1
     secondaryCdr: 1
-    movementSpeed: 4
+    movementSpeed: 3
   _animManager: {fileID: 0}
   isDead: 0
 --- !u!114 &8772313184272174339
@@ -185,7 +187,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   castTime: 0.35
   damageMultiplier: 1
-  headCastPoint: {fileID: 0}
   projectile: {fileID: 0}
 --- !u!195 &8638510732116270166
 NavMeshAgent:

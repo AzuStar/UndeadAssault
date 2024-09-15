@@ -7,7 +7,9 @@ using UnityEngine.UI;
 public class HudStatTrackerSingletonGroup : MonoBehaviour
 {
     public static HudStatTrackerSingletonGroup instance;
+
     public HudStatTracker healthTracker;
+    public HudStatTracker experienceTracker;
 
     void Awake()
     {
