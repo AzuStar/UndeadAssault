@@ -176,9 +176,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats:
     experience: 0
-    experienceToNextLevelBase: 0
-    experienceToNextLevelMultiplier: 0
+    experienceToNextLevelBase: 10
+    experienceToNextLevelMultiplier: 4
     doubleExpChance: 0
+    experienceGranted: 0
     level: 0
     baseAttack: 10
     bonusAttack: 0

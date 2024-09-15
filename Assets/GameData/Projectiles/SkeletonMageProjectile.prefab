@@ -9,12 +9,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4971097015990966}
-  - component: {fileID: 8104579337726447175}
+  - component: {fileID: -8076858212878263392}
   - component: {fileID: 54723350441956278}
   - component: {fileID: 108212708603584814}
   - component: {fileID: 299097586531706941}
+  - component: {fileID: -4762914359678259}
   m_Layer: 0
-  m_Name: Meteorite
+  m_Name: SkeletonMageProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,7 +38,7 @@ Transform:
   - {fileID: 4549684551196332}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8104579337726447175
+--- !u!114 &-8076858212878263392
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -46,19 +47,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1213529451062198}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: badd57128445f504f8439b4220cbe9c3, type: 3}
+  m_Script: {fileID: 11500000, guid: 7783a0c941d5a774385a3d37f03674c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 30
+  speed: 15
   speedScale: 0
   speedRecovery: 0.8
-  hitEffect: {fileID: 0}
-  spawnEffect: {fileID: 0}
+  hitEffect: {fileID: 330413688170582762, guid: 3e83d7519c73ddd4ca498dc57c0c8cbe, type: 3}
+  spawnEffect: {fileID: 2959238049025237002, guid: c875fb57465176e4c9e74111fe5376b4, type: 3}
   lifetime: 3
   owner: {fileID: 0}
-  damagePercent: 6
-  impactPoint: {x: 0, y: 0, z: 0}
-  impactRadius: 3
+  damagePercent: 1
 --- !u!54 &54723350441956278
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -171,6 +170,27 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!135 &-4762914359678259
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1213529451062198}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.15
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1267732140592724
 GameObject:
   m_ObjectHideFlags: 0
@@ -9902,7 +9922,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 4971097015990966}
