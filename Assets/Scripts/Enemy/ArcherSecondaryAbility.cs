@@ -2,11 +2,12 @@ using UnityEngine;
 
 namespace UndeadAssault
 {
-    public class RangedAttackPrimaryAbility : PrimaryAbility
+    public class ArcherSecondaryAbility : SecondaryAbility
     {
+        public LineIndicator lineIndicator;
         public double damageMultiplier = 1.00;
         public override float cooldownFormula => cooldown / _stats.primaryCdr;
-        public float cooldown = 0.55f;
+        public float cooldown = 4.55f;
 
         public GenericProjectile projectile;
 
@@ -42,6 +43,12 @@ namespace UndeadAssault
         {
             _casting = true;
             _aiComponent.animationPaused = true;
+            LineIndicator line = Instantiate(
+                lineIndicator,
+                transform.position + new Vector3(0, 0.1f, 0),
+                transform.rotation,
+                transform
+            );
             this.AttachNTimer(
                 castTime / _stats.primaryCdr,
                 () =>
@@ -57,9 +64,10 @@ namespace UndeadAssault
                     );
                     proj.owner = GetComponent<Entity>();
                     proj.damagePercent = damageMultiplier;
+                    line.transform.SetParent(null);
+                    _aiComponent.animationPaused = false;
                     _cdTimeout += cooldownFormula;
                     _casting = false;
-                    _aiComponent.animationPaused = false;
                 }
             );
         }

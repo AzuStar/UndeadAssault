@@ -146,6 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d79553975e31eba4188396f89999f217, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weight: 1
   stats:
     experience: 0
     experienceToNextLevelBase: 0
@@ -166,6 +167,7 @@ MonoBehaviour:
     dashCdr: 0
     movementSpeed: 3
   _animManager: {fileID: 0}
+  deathSoundPrefab: {fileID: 0}
   isDead: 0
 --- !u!114 &8772313184272174339
 MonoBehaviour:
@@ -207,7 +209,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 38531176563455811}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 1
   m_Speed: 3.5
   m_Acceleration: 35
   avoidancePriority: 50

@@ -11,6 +11,12 @@ namespace UndeadAssault
 
         private LineRenderer _lineRenderer;
 
+        void Awake()
+        {
+            _lineRenderer = GetComponent<LineRenderer>();
+            DrawSegments();
+        }
+
         public void DrawSegments()
         {
             _lineRenderer.positionCount = segments;

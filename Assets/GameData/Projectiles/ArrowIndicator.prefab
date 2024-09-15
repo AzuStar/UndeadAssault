@@ -75,8 +75,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: 0.31, y: 0, z: 0}
-  - {x: 0.31, y: 0, z: 5.19}
+  - {x: 0.6, y: 0, z: 0}
+  - {x: 0.6, y: 0, z: 15}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.1
@@ -99,7 +99,7 @@ LineRenderer:
       serializedVersion: 2
       key0: {r: 1, g: 0, b: 0, a: 1}
       key1: {r: 1, g: 0, b: 0, a: 1}
-      key2: {r: 0, g: 0, b: 0, a: 0}
+      key2: {r: 0, g: 0, b: 0, a: 1}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
@@ -115,13 +115,13 @@ LineRenderer:
       ctime7: 0
       atime0: 0
       atime1: 65535
-      atime2: 0
+      atime2: 29684
       atime3: 0
       atime4: 0
       atime5: 0
       atime6: 0
       atime7: 0
-      m_Mode: 0
+      m_Mode: 2
       m_ColorSpace: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
@@ -211,8 +211,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: -0.31, y: 0, z: 0}
-  - {x: -0.31, y: 0, z: 5.19}
+  - {x: -0.6, y: 0, z: 0}
+  - {x: -0.6, y: 0, z: 15}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.1
@@ -282,6 +282,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7232248718628136141}
   - component: {fileID: 1656214521022265457}
+  - component: {fileID: -61870870046978862}
   m_Layer: 0
   m_Name: ArrowIndicator
   m_TagString: Untagged
@@ -297,7 +298,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8641022705432711969}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -26.75, y: 7, z: -47.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -318,7 +319,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a87813220c2c438449e76de3f27d893c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 5.19
-  width: 0.31
+  range: 15
+  width: 0.6
   line1Renderer: {fileID: 4778958735543431625}
   line2Renderer: {fileID: 6158188177198427785}
+--- !u!114 &-61870870046978862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8641022705432711969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 331d0fd959a2b6a4eb07d05d77f2f7b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifetime: 2

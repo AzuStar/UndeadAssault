@@ -5,6 +5,8 @@ namespace UndeadAssault
 {
     public class DreadKnightSecondaryAbility : SecondaryAbility
     {
+        public float rangeMultiplier = 2.50f;
+        public RangeIndicator rangeIndicator;
         public double damageMultiplier = 1.00;
         public override float cooldownFormula => cooldown / _stats.primaryCdr;
         public float cooldown = 2.5f;
@@ -39,6 +41,14 @@ namespace UndeadAssault
         {
             _aiComponent.animationPaused = true;
             _casting = true;
+            RangeIndicator indicator = Instantiate(
+                rangeIndicator,
+                transform.position,
+                Quaternion.identity,
+                transform
+            );
+            indicator.radius = _stats.attackRange * rangeMultiplier;
+            indicator.DrawSegments();
             this.AttachNTimer(
                 castTime / _stats.primaryCdr,
                 () =>
@@ -46,7 +56,7 @@ namespace UndeadAssault
                     Utils
                         .GetEntitiesInRadius(
                             transform.position,
-                            _stats.attackRange,
+                            _stats.attackRange * rangeMultiplier,
                             entity => entity.tag != transform.tag
                         )
                         .ForEach(entity =>

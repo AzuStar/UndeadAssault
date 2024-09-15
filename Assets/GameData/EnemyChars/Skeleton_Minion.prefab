@@ -118,6 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45c26877a88b3c64e8e4f873bdbf9027, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weight: 1
   stats:
     experience: 0
     experienceToNextLevelBase: 0
@@ -203,7 +204,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 9075699954610139001}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 1
   m_Speed: 3.5
   m_Acceleration: 35
   avoidancePriority: 50
