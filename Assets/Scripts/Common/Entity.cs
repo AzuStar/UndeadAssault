@@ -6,8 +6,10 @@ namespace UndeadAssault
 {
     public abstract class Entity : MonoBehaviour
     {
+        public int weight = 1;
         public Stats stats = new Stats();
         public EntityAnimManager _animManager;
+        public GameObject deathSoundPrefab;
         public bool isDead = false;
 
         void Start()
@@ -60,18 +62,38 @@ namespace UndeadAssault
         public void Die()
         {
             isDead = true;
+            var collider = GetComponent<CapsuleCollider>();
+            if (collider)
+            {
+                collider.enabled = false;
+            }
             if (_animManager != null)
             {
                 _animManager.PlayDeath();
+                if (name == "Mage")
+                {
+                    // 
+                }
+                else
+                {
+                    var obj = Instantiate(deathSoundPrefab, transform.position, transform.rotation);
+                    this.AttachNTimer(2.0f, () =>
+                    {
+                        Destroy(obj);
+                    });
+                }
                 var navMeshAgent = GetComponent<NavMeshAgent>();
                 if (navMeshAgent)
                 {
-                    navMeshAgent.enabled = false;
+                    // 
                 }
-                var collider = GetComponent<CapsuleCollider>();
-                if (collider)
+                else
                 {
-                    collider.enabled = false;
+                    var obj = Instantiate(deathSoundPrefab, transform.position, transform.rotation);
+                    this.AttachNTimer(2.0f, () =>
+                    {
+                        Destroy(obj);
+                    });
                 }
             }
             else

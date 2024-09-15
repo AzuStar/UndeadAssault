@@ -27,6 +27,9 @@ namespace UndeadAssault
         {
             if (_self.isDead)
             {
+                _navMeshAgent.isStopped = true;
+                _navMeshAgent.updatePosition = false;
+                _navMeshAgent.updateRotation = false;
                 return;
             }
             if (target == null)

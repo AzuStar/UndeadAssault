@@ -6,9 +6,9 @@ using UnityEngine.AI;
 public class RoomTrigger : MonoBehaviour
 {
     int _isInTheRoom = 0;
+    int roomWeight = 0;
     bool roomInitialized = false;
     List<EnemySpawnPoint> _enemySpawnPoints = new List<EnemySpawnPoint>();
-    public GameObject[] enemyPrefabs;
     private List<GameObject> _roomEnemies = new List<GameObject>();
 
     void OnDrawGizmos()
@@ -59,19 +59,12 @@ public class RoomTrigger : MonoBehaviour
         _isInTheRoom++;
         if (!roomInitialized)
         {
-            foreach (var spawn in _enemySpawnPoints)
+            while (roomWeight < Gamemode.instance.floorWeight && _enemySpawnPoints.Count > 0 && Gamemode.instance.enemyTypes.Length > 0)
             {
-                if (enemyPrefabs.Length > 0)
-                {
-                    _roomEnemies.Add(
-                        Instantiate(
-                            enemyPrefabs[Random.Range(0, enemyPrefabs.Length)],
-                            spawn.transform.position,
-                            spawn.transform.rotation,
-                            transform
-                        )
-                    );
-                }
+                var enemyType = Gamemode.instance.enemyTypes[Random.Range(0, Gamemode.instance.enemyTypes.Length)];
+                var spawn = _enemySpawnPoints[Random.Range(0, _enemySpawnPoints.Count)];
+                var enemy = Instantiate(enemyType, spawn.transform.position, spawn.transform.rotation, transform);
+                roomWeight += enemy.weight;
             }
             roomInitialized = true;
         }

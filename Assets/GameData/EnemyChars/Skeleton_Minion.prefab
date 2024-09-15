@@ -138,6 +138,7 @@ MonoBehaviour:
     dashCdr: 0
     movementSpeed: 6.5
   _animManager: {fileID: 0}
+  deathSoundPrefab: {fileID: 5129526310603023967, guid: 55a4aac0d26400a44932d092f11b8d22, type: 3}
   isDead: 0
 --- !u!114 &7044447432854665643
 MonoBehaviour:
