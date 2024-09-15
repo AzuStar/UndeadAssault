@@ -175,12 +175,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats:
-    attack: 10
+    experience: 0
+    experienceToNextLevelBase: 0
+    experienceToNextLevelMultiplier: 0
+    doubleExpChance: 0
+    level: 0
+    baseAttack: 10
+    bonusAttack: 0
+    baseMaxHealth: 100
+    bonusMaxHealth: 0
+    secondaryDamageAmplifier: 0
+    damageReduction: 0
     health: 0
-    maxHealth: 100
     attackRange: 0
     primaryCdr: 1
     secondaryCdr: 1
+    dashCdr: 1
     movementSpeed: 5
   _animManager: {fileID: 0}
   isDead: 0
@@ -196,8 +206,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b01ac3ad77ebe4f4a9b5e69eba585d3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  castTime: 0.15
-  dashDistance: 22
+  castTime: 0.25
+  dashDistance: 11
+  cooldown: 2
 --- !u!114 &7294501258941637628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,6 +239,7 @@ MonoBehaviour:
   xOffset: 12
   heightOffset: 10
   meteoriteProjectile: {fileID: 8104579337726447175, guid: 281abcb2c3687424e9a69328a57a94f2, type: 3}
+  cooldown: 8
 --- !u!114 &1968630258968496422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,6 +254,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   castTime: 0.18
   sparkProjectile: {fileID: -4780037369204819333, guid: ba7b1c1bb06da35478af647d15424381, type: 3}
+  cooldown: 1.25
 --- !u!136 &7217887053714624485
 CapsuleCollider:
   m_ObjectHideFlags: 0
