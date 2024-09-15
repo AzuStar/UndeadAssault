@@ -37,22 +37,17 @@ namespace UndeadAssault
         {
             if (_cdTimeout <= 0 && !_casting)
             {
-                // mouse to ray, only look for environment layer
-                Vector3? impactPoint = null;
-
                 if (
                     Physics.Raycast(
                         Camera.main.ScreenPointToRay(Input.mousePosition),
                         out RaycastHit hit,
-                        1000f
+                        1000f,
+                        LayerMask.GetMask(GameConstants.LAYER_ENVIRONMENT)
                     )
                 )
                 {
-                    if (hit.collider.tag == GameConstants.TAG_ENVIRONMENT)
-                        impactPoint = hit.point;
+                    LaunchMeteorite(hit.point);
                 }
-                if (impactPoint != null)
-                    LaunchMeteorite(impactPoint.Value);
             }
         }
 

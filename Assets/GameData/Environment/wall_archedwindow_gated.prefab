@@ -52,6 +52,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall_archedwindow_gated
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b0ca800df1614324a9d04b37f974919c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b0ca800df1614324a9d04b37f974919c, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b0ca800df1614324a9d04b37f974919c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
