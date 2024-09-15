@@ -253,6 +253,7 @@ MonoBehaviour:
   heightOffset: 10
   meteoriteProjectile: {fileID: 8104579337726447175, guid: 281abcb2c3687424e9a69328a57a94f2, type: 3}
   cooldown: 8
+  soundPrefab: {fileID: 5967855397165860749, guid: fbda148847e1565469da1b2373702852, type: 3}
 --- !u!114 &1968630258968496422
 MonoBehaviour:
   m_ObjectHideFlags: 0
