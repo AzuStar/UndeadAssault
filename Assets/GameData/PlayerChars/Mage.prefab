@@ -204,8 +204,8 @@ MonoBehaviour:
     secondaryCdr: 1
     dashCdr: 1
     movementSpeed: 5
+    angularSpeed: 0
   _animManager: {fileID: 0}
-  deathSoundPrefab: {fileID: 0}
   isDead: 0
 --- !u!114 &6652316466909418770
 MonoBehaviour:
@@ -221,7 +221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   castTime: 0.25
   dashDistance: 11
-  cooldown: 2
+  cooldown: 1.25
 --- !u!114 &7294501258941637628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,7 +250,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   castTime: 0.35
   rangeIndicator: {fileID: -8532969908986982569, guid: b960d9406179e634eb898462a6297583, type: 3}
-  xOffset: 12
+  xOffset: 16
   heightOffset: 10
   meteoriteProjectile: {fileID: 8104579337726447175, guid: 281abcb2c3687424e9a69328a57a94f2, type: 3}
   cooldown: 8
@@ -267,9 +267,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dd20a05a4942e44aa02ad77215f1158, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  castTime: 0.18
+  castTime: 0.12
   sparkProjectile: {fileID: -4780037369204819333, guid: ba7b1c1bb06da35478af647d15424381, type: 3}
-  cooldown: 1.25
+  cooldown: 0.7
 --- !u!136 &7217887053714624485
 CapsuleCollider:
   m_ObjectHideFlags: 0

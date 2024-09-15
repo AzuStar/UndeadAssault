@@ -142,7 +142,8 @@ MonoBehaviour:
     primaryCdr: 1
     secondaryCdr: 1
     dashCdr: 0
-    movementSpeed: 7
+    movementSpeed: 9
+    angularSpeed: 0
   _animManager: {fileID: 0}
   isDead: 0
 --- !u!114 &7044447432854665643

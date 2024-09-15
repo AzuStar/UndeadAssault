@@ -240,7 +240,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   takeDamageSounds: []
   deathSounds: []
-  weight: 1
+  weight: 2
   stats:
     experience: 0
     experienceToNextLevelBase: 0

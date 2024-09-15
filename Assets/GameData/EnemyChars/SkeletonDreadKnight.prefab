@@ -315,7 +315,7 @@ MonoBehaviour:
   deathSounds:
   - {fileID: 8300000, guid: ed168752e9cd57c4da5b61120adf251a, type: 3}
   - {fileID: 8300000, guid: 5a716a164eff2e840bfe80d5d5a39185, type: 3}
-  weight: 1
+  weight: 4
   stats:
     experience: 0
     experienceToNextLevelBase: 0
@@ -334,7 +334,7 @@ MonoBehaviour:
     primaryCdr: 1
     secondaryCdr: 1
     dashCdr: 0
-    movementSpeed: 6
+    movementSpeed: 8
     angularSpeed: 250
   _animManager: {fileID: 0}
   isDead: 0
