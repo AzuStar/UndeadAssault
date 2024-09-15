@@ -8670,22 +8670,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -4085195651889933341, guid: b8885deaadcf33046b7b474d1da42736, type: 3}
-      propertyPath: castTime
-      value: 1.1
-      objectReference: {fileID: 0}
-    - target: {fileID: -4085195651889933341, guid: b8885deaadcf33046b7b474d1da42736, type: 3}
-      propertyPath: rangeMultiplier
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: -4085195651889933341, guid: b8885deaadcf33046b7b474d1da42736, type: 3}
-      propertyPath: damageMultiplier
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4160646723035776070, guid: b8885deaadcf33046b7b474d1da42736, type: 3}
-      propertyPath: stats.baseAttack
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 5838272561520567089, guid: b8885deaadcf33046b7b474d1da42736, type: 3}
       propertyPath: m_LocalPosition.x
       value: -32.43487
