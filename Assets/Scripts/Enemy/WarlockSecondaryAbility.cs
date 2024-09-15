@@ -1,15 +1,13 @@
 using UnityEngine;
-using UnityEngine.AI;
 
 namespace UndeadAssault
 {
-    public class DreadKnightSecondaryAbility : SecondaryAbility
+    public class WarlockSecondaryAbility : SecondaryAbility
     {
-        public double damageMultiplier = 1.00;
         public override float cooldownFormula => cooldown / _stats.primaryCdr;
-        public float cooldown = 2.5f;
+        public float cooldown = 3.5f;
 
-        private double _cdTimeout;
+        private float _cdTimeout;
         private Stats _stats;
         private AiComponent _aiComponent;
 
@@ -31,28 +29,24 @@ namespace UndeadAssault
         {
             if (_cdTimeout <= 0)
             {
-                PerformSpin();
+                CastCurseground();
             }
         }
 
-        public void PerformSpin()
+        public void CastCurseground()
         {
-            _aiComponent.animationPaused = true;
             _casting = true;
+            _aiComponent.animationPaused = true;
             this.AttachNTimer(
                 castTime / _stats.primaryCdr,
                 () =>
                 {
-                    Utils
-                        .GetEntitiesInRadius(
-                            transform.position,
-                            _stats.attackRange,
-                            entity => entity.tag != transform.tag
-                        )
-                        .ForEach(entity =>
-                        {
-                            entity.DealDamage(entity, _stats.attack * damageMultiplier);
-                        });
+                    // GameObject curseground = Instantiate(
+                    //     _stats.curseground,
+                    //     transform.position,
+                    //     transform.rotation
+                    // );
+                    // curseground.GetComponent<Curseground>().owner = GetComponent<Entity>();
                     _cdTimeout += cooldownFormula;
                     _casting = false;
                     _aiComponent.animationPaused = false;

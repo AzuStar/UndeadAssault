@@ -5202,11 +5202,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8484843507012908122, guid: d46caabb545f85e44937c8499cd2af02, type: 3}
   m_PrefabInstance: {fileID: 1843575446}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &354926481 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7278473926003891229, guid: 2e4429239963c7d4ba3d3b147f7f009d, type: 3}
-  m_PrefabInstance: {fileID: 1621665981770202947}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &355033204
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6318,50 +6313,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d46caabb545f85e44937c8499cd2af02, type: 3}
---- !u!1 &421545165
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 421545166}
-  - component: {fileID: 421545167}
-  m_Layer: 0
-  m_Name: HeadCastPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &421545166
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 421545165}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.4549999, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 354926481}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &421545167
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 421545165}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a639c3162d263e4a88d077047a11917, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &427274959
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30509,10 +30460,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 7278473926003891229, guid: 2e4429239963c7d4ba3d3b147f7f009d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 421545166}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e4429239963c7d4ba3d3b147f7f009d, type: 3}
 --- !u!1001 &1766457953847351237

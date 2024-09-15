@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2683616805126022217
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7880222030422825005}
+  - component: {fileID: 3431369115658172881}
+  m_Layer: 0
+  m_Name: HeadCastPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7880222030422825005
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2683616805126022217}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.4549999, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7278473926003891229}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3431369115658172881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2683616805126022217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a639c3162d263e4a88d077047a11917, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6448657361646370502
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,6 +150,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: b691ec1576878624fb5a1f42c12bc17c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7080461011069921685}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: b691ec1576878624fb5a1f42c12bc17c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7880222030422825005}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b691ec1576878624fb5a1f42c12bc17c, type: 3}
       insertIndex: -1
@@ -158,7 +205,7 @@ MonoBehaviour:
     doubleExpChance: 0
     experienceGranted: 1
     level: 0
-    baseAttack: 4
+    baseAttack: 3
     bonusAttack: 0
     baseMaxHealth: 45
     bonusMaxHealth: 0
@@ -201,6 +248,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   castTime: 0.2
   damageMultiplier: 1
+  cooldown: 1.3333
   projectile: {fileID: 2944154091940037973, guid: 1ac1d4b421ce7fe45a159991b5af75d0, type: 3}
 --- !u!195 &7844683166397903982
 NavMeshAgent:

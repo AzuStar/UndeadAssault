@@ -6,7 +6,8 @@ namespace UndeadAssault
     {
         public double damageMultiplier = 1.00;
         public float swingAngle = 90f;
-        public override float cooldownFormula => (float)(0.55f / _stats.primaryCdr);
+        public override float cooldownFormula => cooldown / _stats.primaryCdr;
+        public float cooldown = 0.55f;
 
         private double _cdTimeout;
         private Entity _entity;
@@ -52,11 +53,11 @@ namespace UndeadAssault
                             transform.forward,
                             _stats.attackRange,
                             swingAngle,
-                            entity => entity.tag != transform.tag
+                            filter => filter.tag != transform.tag
                         )
-                        .ForEach(entity =>
+                        .ForEach(target =>
                         {
-                            Debug.Log(name + " melee attack on " + entity.name);
+                            _entity.DealDamage(target, _stats.attack * damageMultiplier);
                         });
                     _aiComponent.animationPaused = false;
                     _casting = false;

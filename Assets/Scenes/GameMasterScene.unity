@@ -621,6 +621,63 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1001 &835181211
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5838272561520567089, guid: b8885deaadcf33046b7b474d1da42736, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -28.682365
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838272561520567089, guid: b8885deaadcf33046b7b474d1da42736, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.045000076
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838272561520567089, guid: b8885deaadcf33046b7b474d1da42736, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -33.672832
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838272561520567089, guid: b8885deaadcf33046b7b474d1da42736, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838272561520567089, guid: b8885deaadcf33046b7b474d1da42736, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838272561520567089, guid: b8885deaadcf33046b7b474d1da42736, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838272561520567089, guid: b8885deaadcf33046b7b474d1da42736, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838272561520567089, guid: b8885deaadcf33046b7b474d1da42736, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838272561520567089, guid: b8885deaadcf33046b7b474d1da42736, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838272561520567089, guid: b8885deaadcf33046b7b474d1da42736, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6507249952205814155, guid: b8885deaadcf33046b7b474d1da42736, type: 3}
+      propertyPath: m_Name
+      value: Skeleton_Warrior
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b8885deaadcf33046b7b474d1da42736, type: 3}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -2531,22 +2588,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5005947951315353254, guid: cf2bdfeb7245c37478c01e0b07f386b3, type: 3}
-      propertyPath: stats.dashCdr
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5005947951315353254, guid: cf2bdfeb7245c37478c01e0b07f386b3, type: 3}
-      propertyPath: stats.baseAttack
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5005947951315353254, guid: cf2bdfeb7245c37478c01e0b07f386b3, type: 3}
-      propertyPath: stats.baseMaxHealth
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 6652316466909418770, guid: cf2bdfeb7245c37478c01e0b07f386b3, type: 3}
-      propertyPath: cooldown
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7306283601768909065, guid: cf2bdfeb7245c37478c01e0b07f386b3, type: 3}
       propertyPath: m_Name
       value: Mage
@@ -2622,3 +2663,4 @@ SceneRoots:
   - {fileID: 4346938083462273225}
   - {fileID: 1104897217}
   - {fileID: 1677164382}
+  - {fileID: 835181211}

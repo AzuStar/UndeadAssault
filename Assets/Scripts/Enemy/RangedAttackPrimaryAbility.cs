@@ -5,9 +5,10 @@ namespace UndeadAssault
     public class RangedAttackPrimaryAbility : PrimaryAbility
     {
         public double damageMultiplier = 1.00;
-        public override float cooldownFormula => (float)(0.55f / _stats.primaryCdr);
+        public override float cooldownFormula => cooldown / _stats.primaryCdr;
+        public float cooldown = 0.55f;
 
-        public Projectile projectile;
+        public GenericProjectile projectile;
 
         private double _cdTimeout;
         private Stats _stats;
@@ -47,8 +48,13 @@ namespace UndeadAssault
                         _headCastPoint == null
                             ? transform.position
                             : _headCastPoint.transform.position;
-                    Projectile proj = Instantiate(projectile, launchPoint, transform.rotation);
+                    GenericProjectile proj = Instantiate(
+                        projectile,
+                        launchPoint,
+                        transform.rotation
+                    );
                     proj.owner = GetComponent<Entity>();
+                    proj.damagePercent = damageMultiplier;
                     _cdTimeout += cooldownFormula;
                     _casting = false;
                 }

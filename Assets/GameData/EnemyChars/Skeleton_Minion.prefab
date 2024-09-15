@@ -123,6 +123,7 @@ MonoBehaviour:
     experienceToNextLevelBase: 0
     experienceToNextLevelMultiplier: 0
     doubleExpChance: 0
+    experienceGranted: 0
     level: 0
     baseAttack: 5
     bonusAttack: 0
@@ -165,9 +166,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce60160e999fc2143b0de33602ab9e9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  castTime: 0.55
+  castTime: 0.45
   damageMultiplier: 1
   swingAngle: 90
+  cooldown: 1.333333
 --- !u!136 &5071856599347533938
 CapsuleCollider:
   m_ObjectHideFlags: 0
