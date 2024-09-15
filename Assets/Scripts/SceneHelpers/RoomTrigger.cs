@@ -9,7 +9,7 @@ public class RoomTrigger : MonoBehaviour
     int roomWeight = 0;
     bool roomInitialized = false;
     List<EnemySpawnPoint> _enemySpawnPoints = new List<EnemySpawnPoint>();
-    private List<GameObject> _roomEnemies = new List<GameObject>();
+    private List<Entity> _roomEnemies = new List<Entity>();
 
     void OnDrawGizmos()
     {
@@ -52,11 +52,12 @@ public class RoomTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name != "Mage")
+        if (other.gameObject.tag != GameConstants.TAG_PLAYER)
         {
             return;
         }
         _isInTheRoom++;
+        Debug.Log("entered the room " + _isInTheRoom);
         if (!roomInitialized)
         {
             while (roomWeight < Gamemode.instance.floorWeight && _enemySpawnPoints.Count > 0 && Gamemode.instance.enemyTypes.Length > 0)
@@ -64,6 +65,7 @@ public class RoomTrigger : MonoBehaviour
                 var enemyType = Gamemode.instance.enemyTypes[Random.Range(0, Gamemode.instance.enemyTypes.Length)];
                 var spawn = _enemySpawnPoints[Random.Range(0, _enemySpawnPoints.Count)];
                 var enemy = Instantiate(enemyType, spawn.transform.position, spawn.transform.rotation, transform);
+                _roomEnemies.Add(enemy);
                 roomWeight += enemy.weight;
             }
             roomInitialized = true;
@@ -73,6 +75,7 @@ public class RoomTrigger : MonoBehaviour
             foreach (var enemy in _roomEnemies)
             {
                 enemy.GetComponent<AiComponent>().enabled = true;
+                enemy.GetComponent<NavMeshAgent>().enabled = true;
                 enemy.GetComponent<CapsuleCollider>().enabled = true;
             }
         }
@@ -80,17 +83,19 @@ public class RoomTrigger : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.name != "Mage")
+        if (other.gameObject.tag != GameConstants.TAG_PLAYER)
         {
             return;
         }
         _isInTheRoom--;
+        Debug.Log("left the room " + _isInTheRoom);
+
         if (_isInTheRoom == 0)
         {
             foreach (var enemy in _roomEnemies)
             {
                 enemy.GetComponent<AiComponent>().enabled = false;
-                enemy.GetComponent<NavMeshAgent>().isStopped = true;
+                enemy.GetComponent<NavMeshAgent>().enabled = false;
                 enemy.GetComponent<EntityAnimManager>().SetLocomotionVector(0, 0);
                 enemy.GetComponent<CapsuleCollider>().enabled = false;
             }
