@@ -69,8 +69,10 @@ public class SceneLoader : MonoBehaviour
         {
             player.transform.position = spawn.transform.position;
         }
-        ShowLoadingScreen(false);
+        // ShowLoadingScreen(false);
         player.SetActive(true);
+        SceneTransition.instance.FadeIn();
+        FloorScreen.instance.FadeOut();
     }
 
     public void QuitGame()
@@ -90,7 +92,7 @@ public class SceneLoader : MonoBehaviour
         if (SceneManager.sceneCount > 1)
         {
             mainMenu.SetActive(false);
-            ShowLoadingScreen();
+            // ShowLoadingScreen();
             StartCoroutine(SetupFloor());
         }
         else
