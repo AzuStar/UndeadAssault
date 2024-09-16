@@ -102,19 +102,20 @@ namespace SimpleAudioManager
         /// </summary>
         public void SetIntensity(int pIntensity, float pBlendOutDuration, float pBlendInDuration)
         {
-            if (_currentSongData.intensityClips.Count > Mathf.Max(pIntensity, 0))
-            {
-                PlaySong(
-                    new PlaySongOptions()
-                    {
-                        song = _currentSongIndex,
-                        intensity = Mathf.Max(pIntensity, 0),
-                        startTime = sourcePool[_currentSourceIndex].time,
-                        blendOutTime = pBlendOutDuration,
-                        blendInTime = pBlendInDuration
-                    }
-                );
-            }
+            if (_currentSongData.intensityClips != null)
+                if (_currentSongData.intensityClips.Count > Mathf.Max(pIntensity, 0))
+                {
+                    PlaySong(
+                        new PlaySongOptions()
+                        {
+                            song = _currentSongIndex,
+                            intensity = Mathf.Max(pIntensity, 0),
+                            startTime = sourcePool[_currentSourceIndex].time,
+                            blendOutTime = pBlendOutDuration,
+                            blendInTime = pBlendInDuration
+                        }
+                    );
+                }
         }
 
         /// <summary>

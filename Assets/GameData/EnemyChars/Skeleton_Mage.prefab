@@ -54,15 +54,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 12d56126de94fbd47a9c799630042476, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -21.5
+      value: -30.378548
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 12d56126de94fbd47a9c799630042476, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.045000076
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 12d56126de94fbd47a9c799630042476, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -21.5
+      value: 10.89271
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 12d56126de94fbd47a9c799630042476, type: 3}
       propertyPath: m_LocalRotation.w
@@ -118,7 +118,7 @@ PrefabInstance:
       addedObject: {fileID: 8772313184272174339}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 12d56126de94fbd47a9c799630042476, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4749565560958945979}
+      addedObject: {fileID: 7903189213545483037}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 12d56126de94fbd47a9c799630042476, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8638510732116270166}
@@ -169,12 +169,12 @@ MonoBehaviour:
     secondaryDamageAmplifier: 0
     damageReduction: 0
     health: 0
-    attackRange: 14
+    attackRange: 50
     primaryCdr: 1
     secondaryCdr: 1
     dashCdr: 0
     movementSpeed: 6
-    angularSpeed: 0
+    angularSpeed: 360
   _animManager: {fileID: 0}
   isDead: 0
 --- !u!114 &8772313184272174339
@@ -192,7 +192,7 @@ MonoBehaviour:
   animationPaused: 0
   attackRangeOffset: 0.9
   target: {fileID: 0}
---- !u!114 &4749565560958945979
+--- !u!114 &7903189213545483037
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -201,13 +201,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 38531176563455811}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c4fb057bbfea2b488fe7cb7c9c08550, type: 3}
+  m_Script: {fileID: 11500000, guid: 797b8716abcebed48a68eb8d4d202436, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  castTime: 0.3
-  damageMultiplier: 1
-  cooldown: 1.53846
-  projectile: {fileID: -8076858212878263392, guid: 244dd4debc13cd648ac0c387b099dbfa, type: 3}
+  castTime: 0.35
+  rangeIndicator: {fileID: -8532969908986982569, guid: 407bd86985fd9be41930f4fddbf65fe5, type: 3}
+  xOffset: 5
+  heightOffset: 10
+  meteoriteProjectile: {fileID: 6708013846276714360, guid: f6c55a230cd2b324dafeae31cabe44df, type: 3}
+  cooldown: 2.5
+  offsetFromTarget: 3
 --- !u!195 &8638510732116270166
 NavMeshAgent:
   m_ObjectHideFlags: 0

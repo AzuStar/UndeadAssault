@@ -4,6 +4,7 @@ namespace UndeadAssault
 {
     public class RangedAttackPrimaryAbility : PrimaryAbility
     {
+        public float inaccuracy;
         public double damageMultiplier = 1.00;
         public override float cooldownFormula => cooldown / _stats.primaryCdr;
         public float cooldown = 0.55f;
@@ -36,11 +37,11 @@ namespace UndeadAssault
         {
             if (_cdTimeout <= 0 && !_casting)
             {
-                LaunchProjectile();
+                LaunchProjectile(target);
             }
         }
 
-        public void LaunchProjectile()
+        public void LaunchProjectile(Entity target)
         {
             _casting = true;
             _aiComponent.animationPaused = true;
@@ -53,10 +54,12 @@ namespace UndeadAssault
                         _headCastPoint == null
                             ? transform.position
                             : _headCastPoint.transform.position;
+                    Vector3 eulers = transform.rotation.eulerAngles;
+                    eulers.y += Random.Range(-inaccuracy, inaccuracy);
                     GenericProjectile proj = Instantiate(
                         projectile,
                         launchPoint,
-                        transform.rotation
+                        Quaternion.Euler(eulers)
                     );
                     proj.owner = GetComponent<Entity>();
                     proj.damagePercent = damageMultiplier;

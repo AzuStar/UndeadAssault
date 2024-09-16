@@ -15,7 +15,7 @@ namespace UndeadAssault
             transform.position +=
                 transform.forward * speed * (1 + speedScale) * Time.fixedDeltaTime;
             speedScale *= speedRecovery;
-            if (Vector3.Distance(transform.position, impactPoint) < 0.25f)
+            if (Vector3.Distance(transform.position, impactPoint) < 0.5f)
             {
                 Explode();
             }

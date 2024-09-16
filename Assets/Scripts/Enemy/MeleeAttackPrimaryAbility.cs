@@ -49,10 +49,15 @@ namespace UndeadAssault
             _entity._animManager.FirePrimaryAttack();
             if (fireAudioClips.Length > 0)
             {
-                this.AttachNTimer(0.3f, () =>
-                {
-                    _audioSource.PlayOneShot(fireAudioClips[Random.Range(0, fireAudioClips.Length)]);
-                });
+                this.AttachNTimer(
+                    0.3f,
+                    () =>
+                    {
+                        _audioSource.PlayOneShot(
+                            fireAudioClips[Random.Range(0, fireAudioClips.Length)]
+                        );
+                    }
+                );
             }
             this.AttachNTimer(
                 castTime / _stats.primaryCdr,
