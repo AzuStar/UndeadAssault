@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class RoomTrigger : MonoBehaviour
 {
+    public float spawnOffset = 2f;
     int _isInTheRoom = 0;
     int roomWeight = 0;
     bool roomInitialized = false;
@@ -60,14 +61,7 @@ public class RoomTrigger : MonoBehaviour
         Debug.Log("entered the room " + _isInTheRoom);
         if (!roomInitialized)
         {
-            while (roomWeight < Gamemode.instance.floorWeight && _enemySpawnPoints.Count > 0 && Gamemode.instance.enemyTypes.Length > 0)
-            {
-                var enemyType = Gamemode.instance.enemyTypes[Random.Range(0, Gamemode.instance.enemyTypes.Length)];
-                var spawn = _enemySpawnPoints[Random.Range(0, _enemySpawnPoints.Count)];
-                var enemy = Instantiate(enemyType, spawn.transform.position, spawn.transform.rotation, transform);
-                _roomEnemies.Add(enemy);
-                roomWeight += enemy.weight;
-            }
+            this.AttachNTimer(spawnOffset, PopulateRoom);
             roomInitialized = true;
         }
         else
@@ -78,6 +72,29 @@ public class RoomTrigger : MonoBehaviour
                 enemy.GetComponent<NavMeshAgent>().enabled = true;
                 enemy.GetComponent<CapsuleCollider>().enabled = true;
             }
+        }
+    }
+
+    public void PopulateRoom()
+    {
+        while (
+            roomWeight < Gamemode.instance.floorWeight
+            && _enemySpawnPoints.Count > 0
+            && Gamemode.instance.enemyTypes.Length > 0
+        )
+        {
+            var enemyType = Gamemode.instance.enemyTypes[
+                Random.Range(0, Gamemode.instance.enemyTypes.Length)
+            ];
+            var spawn = _enemySpawnPoints[Random.Range(0, _enemySpawnPoints.Count)];
+            var enemy = Instantiate(
+                enemyType,
+                spawn.GetSpawnPosition(),
+                spawn.transform.rotation,
+                transform
+            );
+            _roomEnemies.Add(enemy);
+            roomWeight += enemy.weight;
         }
     }
 
