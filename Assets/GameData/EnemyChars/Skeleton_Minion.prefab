@@ -143,7 +143,7 @@ MonoBehaviour:
     secondaryCdr: 1
     dashCdr: 0
     movementSpeed: 11
-    angularSpeed: 0
+    angularSpeed: 360
   _animManager: {fileID: 0}
   isDead: 0
 --- !u!114 &7044447432854665643
@@ -158,6 +158,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 453c0ef2bc7acc24fba07fc7e02e741a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pathIndex: 0
+  destinationReached: 0
   animationPaused: 0
   attackRangeOffset: 0.9
   target: {fileID: 0}

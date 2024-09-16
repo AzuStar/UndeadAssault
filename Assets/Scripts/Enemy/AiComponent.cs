@@ -8,9 +8,9 @@ namespace UndeadAssault
     public class AiComponent : MonoBehaviour
     {
         // public LineRenderer lineRenderer;
-        public int pathIndex;
-        public NavMeshPath path;
-        public bool destinationReached = false;
+        // public int pathIndex;
+        // public NavMeshPath path;
+        // public bool destinationReached = false;
 
         public bool allowAttack => _navMeshAgent.isStopped;
         public bool animationPaused = false;
@@ -27,7 +27,7 @@ namespace UndeadAssault
             _self = GetComponent<Entity>();
             _stats = _self.stats;
             _navMeshAgent = GetComponent<NavMeshAgent>();
-            path = new NavMeshPath();
+            // path = new NavMeshPath();
         }
 
         void Update()

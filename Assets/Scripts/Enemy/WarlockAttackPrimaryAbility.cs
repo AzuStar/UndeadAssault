@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace UndeadAssault
 {
-    public class WarlockSecondaryAbility : SecondaryAbility
+    public class WarlockAttackPrimaryAbility : PrimaryAbility
     {
         public override float cooldownFormula => cooldown / _stats.primaryCdr;
         public float cooldown = 3.5f;
@@ -27,13 +27,13 @@ namespace UndeadAssault
 
         public override void CastAbility(Entity target)
         {
-            if (_cdTimeout <= 0)
+            if (_cdTimeout <= 0 && !_casting)
             {
-                CastCurseground();
+                LaunchCurse();
             }
         }
 
-        public void CastCurseground()
+        public void LaunchCurse()
         {
             _casting = true;
             _aiComponent.animationPaused = true;

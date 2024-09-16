@@ -116,7 +116,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: b691ec1576878624fb5a1f42c12bc17c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -30.597637
+      value: -30.06049
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b691ec1576878624fb5a1f42c12bc17c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -124,7 +124,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b691ec1576878624fb5a1f42c12bc17c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -28.212818
+      value: 11.084904
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b691ec1576878624fb5a1f42c12bc17c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -186,9 +186,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b691ec1576878624fb5a1f42c12bc17c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4628499670650266900}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b691ec1576878624fb5a1f42c12bc17c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: -6941389299166227872}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b691ec1576878624fb5a1f42c12bc17c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6178955409671214360}
@@ -255,12 +252,12 @@ MonoBehaviour:
     secondaryDamageAmplifier: 0
     damageReduction: 0
     health: 0
-    attackRange: 14
+    attackRange: 50
     primaryCdr: 1
     secondaryCdr: 1
     dashCdr: 0
     movementSpeed: 10
-    angularSpeed: 0
+    angularSpeed: 360
   _animManager: {fileID: 0}
   isDead: 0
 --- !u!114 &4628499670650266900
@@ -278,23 +275,6 @@ MonoBehaviour:
   animationPaused: 0
   attackRangeOffset: 0.9
   target: {fileID: 0}
---- !u!114 &-6941389299166227872
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7947030169910757031}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e0a722793161954ea200b442d93c5db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  castTime: 0.5
-  lineIndicator: {fileID: 1656214521022265457, guid: b111a4b4fcb685141ac9173de15d5837, type: 3}
-  damageMultiplier: 12
-  cooldown: 4.55
-  projectile: {fileID: 2944154091940037973, guid: 971fbb14cb6afbc4e86d04b0f2224871, type: 3}
 --- !u!114 &6178955409671214360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,9 +288,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   castTime: 0.2
+  inaccuracy: 10
   damageMultiplier: 1
-  cooldown: 1.3333
-  projectile: {fileID: 2944154091940037973, guid: 1ac1d4b421ce7fe45a159991b5af75d0, type: 3}
+  cooldown: 1.65
+  projectile: {fileID: 2944154091940037973, guid: 971fbb14cb6afbc4e86d04b0f2224871, type: 3}
 --- !u!195 &7844683166397903982
 NavMeshAgent:
   m_ObjectHideFlags: 0
