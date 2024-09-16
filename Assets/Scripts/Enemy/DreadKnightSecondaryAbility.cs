@@ -9,7 +9,7 @@ namespace UndeadAssault
         public float rangeMultiplier = 2.50f;
         public RangeIndicator rangeIndicator;
         public double damageMultiplier = 1.00;
-        public override float cooldownFormula => cooldown / _stats.primaryCdr;
+        public override float cooldownFormula => cooldown / _stats.secondaryCdr;
         public float cooldown = 2.5f;
 
         private double _cdTimeout;
