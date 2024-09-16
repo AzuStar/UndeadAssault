@@ -32,5 +32,6 @@ namespace UndeadAssault
         public float secondaryCdr;
         public float dashCdr;
         public float movementSpeed;
+        public float angularSpeed;
     }
 }

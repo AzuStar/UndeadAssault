@@ -13,19 +13,25 @@ namespace UndeadAssault
         public Vector3 movementNatural = Vector3.zero;
 
         private NavMeshAgent _navMeshAgent;
+        private Entity _self;
         private Stats _stats;
         private EntityAnimManager _animManager;
 
         void Start()
         {
             _navMeshAgent = GetComponent<NavMeshAgent>();
-            _stats = GetComponent<Entity>().stats;
+            _self = GetComponent<Entity>();
+            _stats = _self.stats;
             // navMeshAgent.updatePosition = false;
             _animManager = GetComponent<EntityAnimManager>();
         }
 
         void Update()
         {
+            if (_self.isDead)
+            {
+                return;
+            }
             float movementSpeed = (float)_stats.movementSpeed * Time.deltaTime;
             if (Input.GetKey(KeyCode.W))
             {

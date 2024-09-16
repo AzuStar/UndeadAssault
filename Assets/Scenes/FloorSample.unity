@@ -9037,6 +9037,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RoomTrigger
       objectReference: {fileID: 0}
+    - target: {fileID: 4351220411959515318, guid: 9f3734c7985da1f4e8ea4a00710befc7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5929025946359005304, guid: 9f3734c7985da1f4e8ea4a00710befc7, type: 3}
       propertyPath: m_Size.x
       value: 50.047493

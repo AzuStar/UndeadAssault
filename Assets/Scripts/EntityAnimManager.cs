@@ -35,8 +35,9 @@ namespace UndeadAssault
 
         public void PlayDeath()
         {
-            animator.SetTrigger(EntityAnimParameters.PlayDeath);
             animator.SetLayerWeight(EntityAnimLayers.Action, 0);
+            animator.SetLayerWeight(EntityAnimLayers.Hit, 0);
+            animator.SetTrigger(EntityAnimParameters.PlayDeath);
         }
 
         public void PlayHit()

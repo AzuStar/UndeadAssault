@@ -7,6 +7,8 @@ using UnityEngine;
 public class FinishTrigger : MonoBehaviour
 {
     private SceneLoader _sceneLoader;
+    bool used = false;
+
     void OnDrawGizmos()
     {
         foreach (var collider in GetComponents<BoxCollider>())
@@ -25,9 +27,13 @@ public class FinishTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        enabled = false;
+        if (used || other.tag != GameConstants.TAG_PLAYER)
+        {
+            return;
+        }
+        used = true;
         SimpleAudioManager.Manager.instance.SetIntensity(0);
-        Gamemode.instance.floor++;
+        Gamemode.instance.NextFloor();
         // _sceneLoader.ShowLoadingScreen();
         SceneTransition.instance.FadeOut();
         this.AttachNTimer(
@@ -42,7 +48,6 @@ public class FinishTrigger : MonoBehaviour
                         _sceneLoader.StartNextFloor();
                     }
                 );
-
             }
         );
     }

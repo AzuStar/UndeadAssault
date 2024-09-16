@@ -69,7 +69,7 @@ namespace UndeadAssault
             }
         }
 
-        public void Remove()
+        public virtual void Remove()
         {
             SpawnParticles();
             Destroy(gameObject);

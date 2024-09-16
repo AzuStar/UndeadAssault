@@ -1,18 +1,26 @@
 using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
 namespace UndeadAssault
 {
+    [RequireComponent(typeof(AudioSource))]
     public abstract class Entity : MonoBehaviour
     {
+        public AudioClip[] takeDamageSounds;
+        public AudioClip[] deathSounds;
+
+        public int weight = 1;
         public Stats stats = new Stats();
         public EntityAnimManager _animManager;
         public bool isDead = false;
+        private AudioSource _audioSource;
 
         void Start()
         {
             _animManager = GetComponent<EntityAnimManager>();
+            _audioSource = GetComponent<AudioSource>();
         }
 
         protected virtual void Awake()
@@ -26,9 +34,10 @@ namespace UndeadAssault
             int levelups = 0;
             while (true)
             {
-                if (stats.experience >= stats.experienceToNextLevel)
+                float expNext = stats.experienceToNextLevel;
+                if (expNext != 0 && stats.experience >= expNext)
                 {
-                    stats.experience -= stats.experienceToNextLevel;
+                    stats.experience -= expNext;
                     stats.level++;
                     levelups++;
                 }
@@ -48,6 +57,14 @@ namespace UndeadAssault
         public void DealDamage(Entity target, double damage)
         {
             target._animManager.PlayHit();
+            if (target.takeDamageSounds.Length > 0)
+            {
+                target._audioSource.PlayOneShot(
+                    target.takeDamageSounds[
+                        UnityEngine.Random.Range(0, target.takeDamageSounds.Length)
+                    ]
+                );
+            }
             target.stats.health -= damage;
             if (target.stats.health <= 0)
             {
@@ -59,18 +76,20 @@ namespace UndeadAssault
         public void Die()
         {
             isDead = true;
+            GetComponents<CastableAbility>().ToList().ForEach(ability => Destroy(ability));
+            var collider = GetComponent<CapsuleCollider>();
+            if (collider)
+            {
+                collider.enabled = false;
+            }
             if (_animManager != null)
             {
                 _animManager.PlayDeath();
-                var navMeshAgent = GetComponent<NavMeshAgent>();
-                if (navMeshAgent)
+                if (deathSounds.Length > 0)
                 {
-                    navMeshAgent.enabled = false;
-                }
-                var collider = GetComponent<CapsuleCollider>();
-                if (collider)
-                {
-                    collider.enabled = false;
+                    _audioSource.PlayOneShot(
+                        deathSounds[UnityEngine.Random.Range(0, deathSounds.Length)]
+                    );
                 }
             }
             else

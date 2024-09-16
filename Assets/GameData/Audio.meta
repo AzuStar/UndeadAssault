@@ -1,12 +1,7 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/GameData/Environment/Props/rocks_gold.prefab.meta
-guid: 9c54993956dd84b40a9b369fe37390bc
-PrefabImporter:
-========
-guid: 0d2328595f73ca144a26fa4d05049df7
+guid: 4bb20a9da72177f41957be27f32e32c7
 folderAsset: yes
 DefaultImporter:
->>>>>>>> efd3adcbf21fcff124863ebf2f408a6f250d7e69:Assets/GameData/Audio.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

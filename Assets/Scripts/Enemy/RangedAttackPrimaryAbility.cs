@@ -11,14 +11,17 @@ namespace UndeadAssault
         public GenericProjectile projectile;
 
         private double _cdTimeout;
+        private Entity _entity;
         private Stats _stats;
         private AiComponent _aiComponent;
         private HeadCastPoint _headCastPoint;
 
         void Start()
         {
-            _stats = GetComponent<Entity>().stats;
+            _entity = GetComponent<Entity>();
+            _stats = _entity.stats;
             _headCastPoint = GetComponentInChildren<HeadCastPoint>();
+            _aiComponent = GetComponent<AiComponent>();
         }
 
         void Update()
@@ -40,6 +43,8 @@ namespace UndeadAssault
         public void LaunchProjectile()
         {
             _casting = true;
+            _aiComponent.animationPaused = true;
+            _entity._animManager.FirePrimaryAttack();
             this.AttachNTimer(
                 castTime / _stats.primaryCdr,
                 () =>
@@ -57,6 +62,7 @@ namespace UndeadAssault
                     proj.damagePercent = damageMultiplier;
                     _cdTimeout += cooldownFormula;
                     _casting = false;
+                    _aiComponent.animationPaused = false;
                 }
             );
         }

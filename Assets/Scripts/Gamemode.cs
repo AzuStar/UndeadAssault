@@ -1,3 +1,4 @@
+using UnityEditor.SearchService;
 using UnityEngine;
 
 namespace UndeadAssault
@@ -7,11 +8,24 @@ namespace UndeadAssault
         public static Gamemode instance;
         public Entity hero;
 
-        public int floor = 1;
+        public Entity[] enemyTypes;
+        public string[] floorScenes;
+
+        public int floor = 0;
+        public int baseFloorWeight = 8;
+        public int multiFloorWeight = 2;
+        public int floorWeight;
 
         void Awake()
         {
             instance = this;
+            NextFloor();
+        }
+
+        public void NextFloor()
+        {
+            floor++;
+            floorWeight = baseFloorWeight + (floor * multiFloorWeight);
         }
     }
 }

@@ -27,6 +27,9 @@ namespace UndeadAssault
         {
             if (_self.isDead)
             {
+                _navMeshAgent.isStopped = true;
+                _navMeshAgent.updatePosition = false;
+                _navMeshAgent.updateRotation = false;
                 return;
             }
             if (target == null)
@@ -43,6 +46,8 @@ namespace UndeadAssault
             CastSpells(distance);
 
             _navMeshAgent.speed = _stats.movementSpeed;
+            _navMeshAgent.velocity =
+                _navMeshAgent.desiredVelocity.normalized * _stats.movementSpeed;
             if (_seekTimeout > 0)
                 _seekTimeout -= Time.deltaTime;
 
