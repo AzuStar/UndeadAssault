@@ -4,8 +4,13 @@ namespace UndeadAssault
 {
     public class WarlockAttackPrimaryAbility : PrimaryAbility
     {
+        public SpecialEffect rangeIndicator;
+        public float xOffset = 5f;
+        public float heightOffset = 10f;
+        public MeteoriteProjectile meteoriteProjectile;
         public override float cooldownFormula => cooldown / _stats.primaryCdr;
         public float cooldown = 3.5f;
+        public float offsetFromTarget;
 
         private float _cdTimeout;
         private Stats _stats;
@@ -29,11 +34,11 @@ namespace UndeadAssault
         {
             if (_cdTimeout <= 0 && !_casting)
             {
-                LaunchCurse();
+                LaunchCurse(target);
             }
         }
 
-        public void LaunchCurse()
+        public void LaunchCurse(Entity target)
         {
             _casting = true;
             _aiComponent.animationPaused = true;
@@ -41,12 +46,29 @@ namespace UndeadAssault
                 castTime / _stats.primaryCdr,
                 () =>
                 {
-                    // GameObject curseground = Instantiate(
-                    //     _stats.curseground,
-                    //     transform.position,
-                    //     transform.rotation
-                    // );
-                    // curseground.GetComponent<Curseground>().owner = GetComponent<Entity>();
+                    Vector3 impactPoint =
+                        target.transform.position
+                        + new Vector3(
+                            Random.Range(-offsetFromTarget, offsetFromTarget),
+                            0,
+                            Random.Range(-offsetFromTarget, offsetFromTarget)
+                        );
+                    float sign = Random.value > 0.5f ? 1 : -1;
+                    Vector3 spawnPoint = impactPoint + new Vector3(xOffset * sign, heightOffset, 0);
+
+                    MeteoriteProjectile proj = Instantiate(
+                        meteoriteProjectile,
+                        spawnPoint,
+                        transform.rotation
+                    );
+                    proj.impactPoint = impactPoint;
+                    proj.owner = GetComponent<Entity>();
+                    Instantiate(
+                        rangeIndicator,
+                        impactPoint + new Vector3(0, 0.1f, 0),
+                        Quaternion.identity
+                    );
+
                     _cdTimeout += cooldownFormula;
                     _casting = false;
                     _aiComponent.animationPaused = false;
