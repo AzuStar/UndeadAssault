@@ -11,6 +11,7 @@ namespace UndeadAssault
         public AudioClip[] takeDamageSounds;
         public AudioClip[] deathSounds;
 
+        public bool invulnerable = false;
         public int weight = 1;
         public Stats stats = new Stats();
         public EntityAnimManager _animManager;
@@ -64,6 +65,10 @@ namespace UndeadAssault
                         UnityEngine.Random.Range(0, target.takeDamageSounds.Length)
                     ]
                 );
+            }
+            if (target.invulnerable)
+            {
+                return;
             }
             target.stats.health -= damage;
             if (target.stats.health <= 0)

@@ -3,8 +3,6 @@ using UnityEngine.AI;
 
 namespace UndeadAssault
 {
-    [RequireComponent(typeof(Entity))]
-    [RequireComponent(typeof(NavMeshAgent))]
     public class AiComponent : MonoBehaviour
     {
         // public LineRenderer lineRenderer;

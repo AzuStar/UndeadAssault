@@ -54,7 +54,12 @@ public class SceneLoader : MonoBehaviour
                 {
                     if (action.isDone)
                     {
-                        StartFloor("Scenes/" + Gamemode.instance.floorScenes[Random.Range(0, Gamemode.instance.floorScenes.Length)]);
+                        StartFloor(
+                            "Scenes/"
+                                + Gamemode.instance.floorScenes[
+                                    Random.Range(0, Gamemode.instance.floorScenes.Length)
+                                ]
+                        );
                     }
                 };
             }
@@ -68,6 +73,7 @@ public class SceneLoader : MonoBehaviour
         if (spawn != null && spawn.enabled)
         {
             player.transform.position = spawn.transform.position;
+            player.GetComponent<Entity>().invulnerable = false;
         }
         // ShowLoadingScreen(false);
         player.SetActive(true);
