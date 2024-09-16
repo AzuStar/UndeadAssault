@@ -82,11 +82,8 @@ namespace UndeadAssault
         {
             isDead = true;
             GetComponents<CastableAbility>().ToList().ForEach(ability => Destroy(ability));
-            var collider = GetComponent<CapsuleCollider>();
-            if (collider)
-            {
-                collider.enabled = false;
-            }
+            GetComponents<Collider>().ToList().ForEach(collider => Destroy(collider));
+
             if (_animManager != null)
             {
                 _animManager.PlayDeath();

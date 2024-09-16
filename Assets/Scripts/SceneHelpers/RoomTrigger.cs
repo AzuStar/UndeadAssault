@@ -70,7 +70,8 @@ public class RoomTrigger : MonoBehaviour
             {
                 enemy.GetComponent<AiComponent>().enabled = true;
                 enemy.GetComponent<NavMeshAgent>().enabled = true;
-                enemy.GetComponent<CapsuleCollider>().enabled = true;
+                if (enemy.GetComponent<CapsuleCollider>() != null)
+                    enemy.GetComponent<CapsuleCollider>().enabled = true;
             }
         }
     }
@@ -114,7 +115,8 @@ public class RoomTrigger : MonoBehaviour
                 enemy.GetComponent<AiComponent>().enabled = false;
                 enemy.GetComponent<NavMeshAgent>().enabled = false;
                 enemy.GetComponent<EntityAnimManager>().SetLocomotionVector(0, 0);
-                enemy.GetComponent<CapsuleCollider>().enabled = false;
+                if (enemy.GetComponent<CapsuleCollider>() != null)
+                    enemy.GetComponent<CapsuleCollider>().enabled = false;
             }
         }
     }
