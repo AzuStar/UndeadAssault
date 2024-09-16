@@ -133,16 +133,16 @@ MonoBehaviour:
     level: 0
     baseAttack: 5
     bonusAttack: 0
-    baseMaxHealth: 20
+    baseMaxHealth: 13
     bonusMaxHealth: 0
     secondaryDamageAmplifier: 0
     damageReduction: 0
     health: 0
-    attackRange: 1.8
+    attackRange: 2.5
     primaryCdr: 1
     secondaryCdr: 1
     dashCdr: 0
-    movementSpeed: 13
+    movementSpeed: 11
     angularSpeed: 0
   _animManager: {fileID: 0}
   isDead: 0
