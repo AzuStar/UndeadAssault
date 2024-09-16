@@ -290,7 +290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e0a722793161954ea200b442d93c5db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  castTime: 1.1
+  castTime: 0.5
   lineIndicator: {fileID: 1656214521022265457, guid: b111a4b4fcb685141ac9173de15d5837, type: 3}
   damageMultiplier: 12
   cooldown: 4.55
