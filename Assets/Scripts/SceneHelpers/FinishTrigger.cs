@@ -33,6 +33,7 @@ public class FinishTrigger : MonoBehaviour
         }
         used = true;
         SimpleAudioManager.Manager.instance.SetIntensity(0);
+        other.GetComponent<Entity>().invulnerable = true;
         Gamemode.instance.NextFloor();
         // _sceneLoader.ShowLoadingScreen();
         SceneTransition.instance.FadeOut();

@@ -11,6 +11,7 @@ namespace UndeadAssault
         public AudioClip[] takeDamageSounds;
         public AudioClip[] deathSounds;
 
+        public bool invulnerable = false;
         public int weight = 1;
         public Stats stats = new Stats();
         public EntityAnimManager _animManager;
@@ -65,6 +66,10 @@ namespace UndeadAssault
                     ]
                 );
             }
+            if (target.invulnerable)
+            {
+                return;
+            }
             target.stats.health -= damage;
             if (target.stats.health <= 0)
             {
@@ -77,11 +82,8 @@ namespace UndeadAssault
         {
             isDead = true;
             GetComponents<CastableAbility>().ToList().ForEach(ability => Destroy(ability));
-            var collider = GetComponent<CapsuleCollider>();
-            if (collider)
-            {
-                collider.enabled = false;
-            }
+            GetComponents<Collider>().ToList().ForEach(collider => Destroy(collider));
+
             if (_animManager != null)
             {
                 _animManager.PlayDeath();

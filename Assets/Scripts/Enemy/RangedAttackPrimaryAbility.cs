@@ -6,8 +6,12 @@ namespace UndeadAssault
     {
         public float inaccuracy;
         public double damageMultiplier = 1.00;
-        public override float cooldownFormula => cooldown / _stats.primaryCdr;
+        public override float cooldownFormula =>
+            cooldown
+            / _stats.primaryCdr
+            * (1 + Random.Range(-cooldownFluctuation, cooldownFluctuation));
         public float cooldown = 0.55f;
+        public float cooldownFluctuation = 0.1f;
 
         public GenericProjectile projectile;
 
