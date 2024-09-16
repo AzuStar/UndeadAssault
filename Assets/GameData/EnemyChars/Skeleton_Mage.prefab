@@ -162,7 +162,7 @@ MonoBehaviour:
     doubleExpChance: 0
     experienceGranted: 1
     level: 0
-    baseAttack: 4
+    baseAttack: 10
     bonusAttack: 0
     baseMaxHealth: 34
     bonusMaxHealth: 0
