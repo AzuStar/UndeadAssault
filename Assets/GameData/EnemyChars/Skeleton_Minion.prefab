@@ -159,9 +159,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathIndex: 0
-  destinationReached: 0
   animationPaused: 0
-  attackRangeOffset: 0.9
+  attackRangeOffset: 0.5
+  turnSpeed: 10
   target: {fileID: 0}
 --- !u!114 &2041027236498910507
 MonoBehaviour:
